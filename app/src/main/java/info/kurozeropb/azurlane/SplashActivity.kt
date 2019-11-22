@@ -34,10 +34,8 @@ class SplashActivity : AppCompatActivity() {
                     response != null -> {
                         val intent = Intent(this@SplashActivity, MainActivity::class.java)
                         intent.putExtra("names", Gson().toJson(response.ships))
-                        Timer().schedule(10000) {
-                            startActivity(intent)
-                            finish()
-                        }
+                        startActivity(intent)
+                        finish()
                     }
                     exception != null -> {
                         Timer().schedule(200) {

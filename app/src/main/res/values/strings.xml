@@ -15,4 +15,5 @@
     <string name="twitter">Twitter: %1$s</string>
     <string name="voice_actress">Voice Actress: %1$s</string>
     <string name="btn_search_description">search</string>
+    <string name="logo_description">logo</string>
 </resources>

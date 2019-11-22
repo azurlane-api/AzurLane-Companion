@@ -9,6 +9,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.lang.Exception
 import com.github.kittinunf.result.Result
+import info.kurozeropb.azurlane.responses.NamesResponse
 
 object API {
     const val version = "1.0.0"
@@ -31,6 +32,34 @@ object API {
                         is Result.Success -> {
                             if (data != null) {
                                 Response(Gson().fromJson(data, ShipResponse::class.java), null)
+                            } else {
+                                Response(null, Exception("No data returned"))
+                            }
+                        }
+                        is Result.Failure -> {
+                            if (exception != null) {
+                                Response(null, exception)
+                            } else {
+                                Response(null, Exception("No data returned"))
+                            }
+                        }
+                    }
+                    complete(response)
+                }
+        }
+    }
+
+    fun getShipNames(complete: Response<NamesResponse?, Exception?>.() -> Unit) {
+        GlobalScope.launch(Dispatchers.IO) {
+            "/names".httpGet()
+                .timeout(31000)
+                .timeoutRead(60000)
+                .responseString { result ->
+                    val (data, exception) = result
+                    val response = when (result) {
+                        is Result.Success -> {
+                            if (data != null) {
+                                Response(Gson().fromJson(data, NamesResponse::class.java), null)
                             } else {
                                 Response(null, Exception("No data returned"))
                             }

@@ -13,6 +13,11 @@ import info.kurozeropb.azurlane.helper.GlideApp
 import info.kurozeropb.azurlane.helper.ItemDecoration
 import info.kurozeropb.azurlane.responses.Ship
 import kotlinx.android.synthetic.main.activity_ship.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import java.util.*
+import kotlin.concurrent.schedule
 
 class ShipActivity : AppCompatActivity() {
 
@@ -64,9 +69,23 @@ class ShipActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
-        val intent = Intent(this@ShipActivity, MainActivity::class.java)
-        startActivity(intent)
-        finish()
+        API.getShipNames {
+            val (response, exception) = this
+            GlobalScope.launch(Dispatchers.Main) {
+                when {
+                    response != null -> {
+                        val intent = Intent(this@ShipActivity, MainActivity::class.java)
+                        intent.putExtra("names", Gson().toJson(response.ships))
+                        startActivity(intent)
+                        finish()
+                    }
+                    exception != null -> {
+                        Timer().schedule(200) {
+                            Snackbar.make(shipActivity, exception.message ?: "Unkown Error", Snackbar.LENGTH_LONG).show()
+                        }
+                    }
+                }
+            }
+        }
     }
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Azur Lane Info</string>
+    <string name="app_name">Azur Lane Companion</string>
     <string name="search_button">Go</string>
     <string name="search_hint">Ship name</string>
     <string name="ship_image">ship_image</string>

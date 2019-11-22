@@ -1,6 +1,7 @@
 package info.kurozeropb.azurlane
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Html
 import android.text.method.LinkMovementMethod
@@ -26,6 +27,11 @@ class ShipActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         overridePendingTransition(R.anim.fadein, R.anim.fadeout)
         setContentView(R.layout.activity_ship)
+
+        window.apply {
+            statusBarColor = Color.WHITE
+            decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        }
 
         val name = intent.getStringExtra("name")
         if (name.isNullOrBlank()) {

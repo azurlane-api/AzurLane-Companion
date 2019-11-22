@@ -2,6 +2,7 @@ package info.kurozeropb.azurlane
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -27,6 +28,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         overridePendingTransition(R.anim.fadein, R.anim.fadeout)
         setContentView(R.layout.activity_main)
+
+        window.apply {
+            statusBarColor = Color.WHITE
+            decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        }
 
         val names = Gson().fromJson<List<String>>(intent.getStringExtra("names"), object : TypeToken<List<String>?>() {}.type)
         ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, names).also { adapter ->

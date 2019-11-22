@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Azur Lane Info</string>
+    <string name="search_button">Go</string>
+    <string name="search_hint">Ship name</string>
+    <string name="ship_image">ship_image</string>
+    <string name="name">%1$s</string>
+    <string name="construction">Construction: %1$s</string>
+    <string name="rarity">Rarity: %1$s</string>
+    <string name="ship_class">Class: %1$s</string>
+    <string name="nationality">Nationality: %1$s</string>
+    <string name="classification">Classification: %1$s</string>
+    <string name="artist">Artist: %1$s</string>
+    <string name="web">Web: %1$s</string>
+    <string name="pixiv">Pixiv: %1$s</string>
+    <string name="twitter">Twitter: %1$s</string>
+    <string name="voice_actress">Voice Actress: %1$s</string>
+    <string name="btn_search_description">search</string>
+</resources>

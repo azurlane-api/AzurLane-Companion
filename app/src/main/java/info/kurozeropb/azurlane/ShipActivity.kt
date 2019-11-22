@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Html
 import android.text.method.LinkMovementMethod
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
@@ -64,7 +65,9 @@ class ShipActivity : AppCompatActivity() {
         rv_row.addItemDecoration(ItemDecoration(80, ship.skins.size))
 
         val adapter = RecyclerAdapter()
-        adapter.setImages(ship.skins.subList(1, ship.skins.size))
+        val skins = ship.skins.subList(1, ship.skins.size)
+        if (skins.isNullOrEmpty()) rv_row.visibility = View.GONE
+        adapter.setImages(skins)
         rv_row.adapter = adapter
     }
 

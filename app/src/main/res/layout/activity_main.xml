@@ -57,7 +57,7 @@
             android:layout_marginStart="16dp"
             android:background="@drawable/button_round"
             android:src="@drawable/magnify"
-            android:tint="@android:color/darker_gray"
+            android:tint="@android:color/black"
             android:contentDescription="@string/btn_search_description"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/et_search_bar"

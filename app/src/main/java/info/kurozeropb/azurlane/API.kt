@@ -1,5 +1,7 @@
 package info.kurozeropb.azurlane
 
+import android.content.Context
+import android.os.Build
 import com.github.kittinunf.fuel.httpGet
 import com.google.gson.Gson
 import info.kurozeropb.azurlane.responses.Response
@@ -9,10 +11,9 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.lang.Exception
 import com.github.kittinunf.result.Result
-import info.kurozeropb.azurlane.responses.NamesResponse
+import info.kurozeropb.azurlane.responses.AllShipsResponse
 
 object API {
-    const val version = "1.0.0"
     const val baseUrl = "https://azurlane-api.herokuapp.com/v2"
 
     init {
@@ -20,6 +21,21 @@ object API {
     }
 
     external fun getSecretKey(): String?
+
+    fun getVersionName(ctx: Context): String {
+        val packageInfo = ctx.packageManager.getPackageInfo(ctx.packageName, 0)
+        return packageInfo.versionName
+    }
+
+    fun getVersionCode(ctx: Context): String {
+        val packageInfo = ctx.packageManager.getPackageInfo(ctx.packageName, 0)
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            String.format("%03d", packageInfo.longVersionCode)
+        } else {
+            @Suppress("DEPRECATION")
+            String.format("%03d", packageInfo.versionCode)
+        }
+    }
 
     fun getShip(name: String, complete: Response<ShipResponse?, Exception?>.() -> Unit) {
         GlobalScope.launch(Dispatchers.IO) {
@@ -49,9 +65,9 @@ object API {
         }
     }
 
-    fun getShipNames(complete: Response<NamesResponse?, Exception?>.() -> Unit) {
+    fun getAllShips(complete: Response<AllShipsResponse?, Exception?>.() -> Unit) {
         GlobalScope.launch(Dispatchers.IO) {
-            "/names".httpGet()
+            "/ships/all".httpGet()
                 .timeout(31000)
                 .timeoutRead(60000)
                 .responseString { result ->
@@ -59,7 +75,7 @@ object API {
                     val response = when (result) {
                         is Result.Success -> {
                             if (data != null) {
-                                Response(Gson().fromJson(data, NamesResponse::class.java), null)
+                                Response(Gson().fromJson(data, AllShipsResponse::class.java), null)
                             } else {
                                 Response(null, Exception("No data returned"))
                             }

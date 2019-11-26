@@ -2,7 +2,6 @@ package info.kurozeropb.azurlane
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -13,6 +12,7 @@ import android.widget.ArrayAdapter
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import info.kurozeropb.azurlane.responses.Ships
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -22,6 +22,8 @@ import org.jetbrains.anko.sdk27.coroutines.onEditorAction
 import java.util.*
 import kotlin.concurrent.schedule
 
+lateinit var ships: Ships
+
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,15 +31,14 @@ class MainActivity : AppCompatActivity() {
         overridePendingTransition(R.anim.fadein, R.anim.fadeout)
         setContentView(R.layout.activity_main)
 
-        window.apply {
-            statusBarColor = Color.WHITE
-            decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        val stringShips = intent.getStringExtra("ships")
+        if (!stringShips.isNullOrBlank()) {
+            ships = Gson().fromJson<Ships>(stringShips, object : TypeToken<Ships?>() {}.type)
+            ships = ships.distinctBy { it.name }
         }
 
-        val names = Gson().fromJson<List<String>>(intent.getStringExtra("names"), object : TypeToken<List<String>?>() {}.type)
-        ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, names).also { adapter ->
-            et_search_bar.setAdapter(adapter)
-        }
+        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, ships.map { it.name })
+        et_search_bar.setAdapter(adapter)
 
         btn_search.onClick { searchShip() }
         et_search_bar.onEditorAction { _, actionId, _ ->

@@ -9,6 +9,7 @@ import android.view.animation.AlphaAnimation
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
+import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
@@ -52,6 +53,7 @@ class MainActivity : AppCompatActivity() {
             val name = et_search_bar.text.toString()
             searchShip(name, this@MainActivity, mainActivity)
         }
+
         et_search_bar.onEditorAction { _, actionId, _ ->
             when (actionId) {
                 EditorInfo.IME_ACTION_SEARCH -> {
@@ -59,6 +61,18 @@ class MainActivity : AppCompatActivity() {
                     searchShip(name, this@MainActivity, mainActivity)
                 }
             }
+        }
+
+        et_search_bar.addTextChangedListener {
+            if ((it?.length ?: 0) >= 1) {
+                btn_clear_search_bar.visibility = View.VISIBLE
+            } else {
+                btn_clear_search_bar.visibility = View.GONE
+            }
+        }
+
+        btn_clear_search_bar.onClick {
+            et_search_bar.text.clear()
         }
     }
 

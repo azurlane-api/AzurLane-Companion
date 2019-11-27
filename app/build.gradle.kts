@@ -58,7 +58,7 @@ dependencies {
     implementation("com.github.kittinunf.fuel:fuel:2.2.1")
     implementation("com.google.code.gson:gson:2.8.6")
     implementation("com.cesards.android:cropimageview:1.0.2.1")
-    implementation("com.facebook.fresco:fresco:1.9.0")
+    implementation("com.facebook.fresco:fresco:2.0.0")
     implementation("com.github.stfalcon:frescoimageviewer:0.5.0")
     implementation("com.squareup.picasso:picasso:2.71828")
     implementation("com.hendraanggrian:pikasso:0.2")

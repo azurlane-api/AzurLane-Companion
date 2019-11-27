@@ -12,7 +12,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import com.stfalcon.frescoimageviewer.ImageViewer
 import info.kurozeropb.azurlane.R
-import info.kurozeropb.azurlane.adapter.RecyclerAdapter
+import info.kurozeropb.azurlane.adapter.SkinRecyclerAdapter
 import info.kurozeropb.azurlane.helper.GlideApp
 import info.kurozeropb.azurlane.helper.ItemDecoration
 import info.kurozeropb.azurlane.responses.Ship
@@ -63,7 +63,7 @@ class GeneralInfo : Fragment() {
         view.rv_row.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         view.rv_row.addItemDecoration(ItemDecoration(80, ship.skins.size))
 
-        val adapter = RecyclerAdapter()
+        val adapter = SkinRecyclerAdapter()
         val skins = ship.skins.subList(1, ship.skins.size)
         if (skins.isNullOrEmpty()) view.rv_row.visibility = View.GONE
         adapter.setImages(skins)

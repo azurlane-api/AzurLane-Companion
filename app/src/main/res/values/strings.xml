@@ -20,4 +20,6 @@
     <string name="tab_general">General</string>
     <string name="tab_stats">Stats</string>
     <string name="soon">Soon™</string>
+    <string name="ship_avatar">ship avatar</string>
+    <string name="ship_name_example">Example</string>
 </resources>

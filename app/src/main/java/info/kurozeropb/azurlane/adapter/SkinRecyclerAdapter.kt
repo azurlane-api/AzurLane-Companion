@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import info.kurozeropb.azurlane.R
 import info.kurozeropb.azurlane.responses.Skin
 
-class RecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SkinRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var images = listOf<Skin>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ImageViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.skin, parent, false))

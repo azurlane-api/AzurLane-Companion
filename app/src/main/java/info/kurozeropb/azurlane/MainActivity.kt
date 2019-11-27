@@ -9,11 +9,14 @@ import android.view.animation.AlphaAnimation
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import info.kurozeropb.azurlane.adapter.ShipRecyclerAdapter
 import info.kurozeropb.azurlane.responses.Ships
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -37,62 +40,75 @@ class MainActivity : AppCompatActivity() {
             ships = ships.distinctBy { it.name }
         }
 
+        rv_ships.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        val rvAdapter = ShipRecyclerAdapter()
+        rvAdapter.setImages(ships, mainActivity)
+        rv_ships.adapter = rvAdapter
+
         val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, ships.map { it.name })
         et_search_bar.setAdapter(adapter)
 
-        btn_search.onClick { searchShip() }
+        btn_search.onClick {
+            val name = et_search_bar.text.toString()
+            searchShip(name, this@MainActivity, mainActivity)
+        }
         et_search_bar.onEditorAction { _, actionId, _ ->
             when (actionId) {
-                EditorInfo.IME_ACTION_SEARCH -> searchShip()
+                EditorInfo.IME_ACTION_SEARCH -> {
+                    val name = et_search_bar.text.toString()
+                    searchShip(name, this@MainActivity, mainActivity)
+                }
             }
         }
     }
 
-    private fun searchShip() {
-        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(mainActivity.windowToken, 0)
+    companion object {
 
-        val name = et_search_bar.text.toString()
-        if (name.isBlank()) {
-            Snackbar.make(mainActivity, "Name can't be empty", Snackbar.LENGTH_LONG)
-            return
-        }
+        fun searchShip(name: String, context: Context, view: View) {
+            val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(view.windowToken, 0)
 
-        val inAnimation = AlphaAnimation(0f, 1f)
-        inAnimation.duration = 200
-        val outAnimation = AlphaAnimation(1f, 0f)
-        outAnimation.duration = 200
+            if (name.isBlank()) {
+                Snackbar.make(view, "Name can't be empty", Snackbar.LENGTH_LONG)
+                return
+            }
 
-        progressBarHolder.animation = inAnimation
-        progressBarHolder.visibility = View.VISIBLE
-        btn_search.isEnabled = false
+            val inAnimation = AlphaAnimation(0f, 1f)
+            inAnimation.duration = 200
+            val outAnimation = AlphaAnimation(1f, 0f)
+            outAnimation.duration = 200
 
-        API.getShip(name) {
-            val (response, exception) = this
-            GlobalScope.launch(Dispatchers.Main) {
-                when {
-                    response != null -> {
-                        progressBarHolder.animation = outAnimation
-                        progressBarHolder.visibility = View.GONE
-                        btn_search.isEnabled = true
+            view.progressBarHolder.animation = inAnimation
+            view.progressBarHolder.visibility = View.VISIBLE
+            view.btn_search.isEnabled = false
 
-                        val intent = Intent(this@MainActivity, ShipActivity::class.java)
-                        intent.putExtra("name", name)
-                        intent.putExtra("ship", Gson().toJson(response.ship))
-                        startActivity(intent)
-                        finish()
-                    }
-                    exception != null -> {
-                        progressBarHolder.animation = outAnimation
-                        progressBarHolder.visibility = View.GONE
-                        btn_search.isEnabled = true
+            API.getShip(name) {
+                val (response, exception) = this
+                GlobalScope.launch(Dispatchers.Main) {
+                    when {
+                        response != null -> {
+                            view.progressBarHolder.animation = outAnimation
+                            view.progressBarHolder.visibility = View.GONE
+                            view.btn_search.isEnabled = true
 
-                        Timer().schedule(200) {
-                            Snackbar.make(mainActivity, exception.message ?: "Unkown Error", Snackbar.LENGTH_LONG).show()
+                            val intent = Intent(context, ShipActivity::class.java)
+                            intent.putExtra("name", name)
+                            intent.putExtra("ship", Gson().toJson(response.ship))
+                            context.startActivity(intent)
+                        }
+                        exception != null -> {
+                            view.progressBarHolder.animation = outAnimation
+                            view.progressBarHolder.visibility = View.GONE
+                            view.btn_search.isEnabled = true
+
+                            Timer().schedule(200) {
+                                Snackbar.make(view, exception.message ?: "Unkown Error", Snackbar.LENGTH_LONG).show()
+                            }
                         }
                     }
                 }
             }
         }
+
     }
 }

@@ -4,7 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
+import info.kurozeropb.azurlane.adapter.SHARE_IMAGE
 import info.kurozeropb.azurlane.adapter.ViewPagerAdapter
+import info.kurozeropb.azurlane.adapter.file
 import info.kurozeropb.azurlane.fragments.GeneralInfo
 import info.kurozeropb.azurlane.fragments.StatsInfo
 import kotlinx.android.synthetic.main.activity_ship.*
@@ -27,9 +29,30 @@ class ShipActivity : AppCompatActivity() {
         }
     }
 
+    // Whenever we get a result from an intent
+    override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
+        super.onActivityResult(requestCode, resultCode, intent)
+
+        // If the user canceled the action just return on do nothing
+        if (resultCode == RESULT_CANCELED) return
+        when (requestCode) {
+            SHARE_IMAGE -> { // Delete temp file after sharing an image
+                try {
+                    if (file.exists() && resultCode == RESULT_OK) {
+                        Thread.sleep(1_000) // Stupid result doesn't actually wait for the intent to finish sending...
+                        val isDeleted = file.delete()
+                        if (isDeleted.not())
+                            Snackbar.make(shipActivity, "Could not delete shared file", Snackbar.LENGTH_LONG).show()
+                    }
+                } catch (e: Exception) {
+                    Snackbar.make(shipActivity, e.message ?: "Something went wrong", Snackbar.LENGTH_LONG).show()
+                }
+            }
+        }
+    }
+
     override fun onBackPressed() {
-        val intent = Intent(this@ShipActivity, MainActivity::class.java)
-        startActivity(intent)
+        super.onBackPressed()
         finish()
     }
 

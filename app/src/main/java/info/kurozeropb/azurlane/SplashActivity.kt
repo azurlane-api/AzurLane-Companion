@@ -43,7 +43,6 @@ class SplashActivity : AppCompatActivity() {
         val config = ImagePipelineConfig.newBuilder(this)
             .setProgressiveJpegConfig(SimpleProgressiveJpegConfig())
             .setResizeAndRotateEnabledForNetwork(true)
-            .setDownsampleEnabled(true)
             .build()
         Fresco.initialize(this, config)
 

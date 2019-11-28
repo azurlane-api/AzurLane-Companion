@@ -1,2 +1,2 @@
-# AzurLaneInfo
-Azur Lane Info android app
+# Azur Lane Companion
+Azur Lane Companion android app

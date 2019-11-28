@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package info.kurozeropb.azurlane.adapter
 
 import android.annotation.SuppressLint
@@ -12,6 +14,8 @@ import com.google.android.material.snackbar.Snackbar
 import com.hendraanggrian.pikasso.into
 import com.hendraanggrian.pikasso.picasso
 import com.stfalcon.frescoimageviewer.ImageViewer
+import info.kurozeropb.azurlane.API
+import info.kurozeropb.azurlane.App
 import info.kurozeropb.azurlane.R
 import info.kurozeropb.azurlane.ShipActivity
 import info.kurozeropb.azurlane.helper.GlideApp
@@ -25,10 +29,11 @@ import java.io.FileOutputStream
 import java.io.IOException
 import java.util.*
 
-const val SHARE_IMAGE = 999
 lateinit var file: File
 
 class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+    private val activity = itemView.context as ShipActivity
 
     @SuppressLint("InflateParams")
     fun bindView(skin: Skin) {
@@ -52,7 +57,7 @@ class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                         bitmap.compress(Bitmap.CompressFormat.PNG, 100, bytes)
 
                         val sdCard = Environment.getExternalStorageDirectory()
-                        val dir = File(sdCard.absolutePath + "/Nekos")
+                        val dir = File(sdCard.absolutePath + "/AzurLane")
                         if (dir.exists().not())
                             dir.mkdirs()
 
@@ -72,11 +77,19 @@ class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                         val uri = FileProvider.getUriForFile(itemView.context, itemView.context.applicationContext.packageName + ".ImageFileProvider", file)
                         intent.putExtra(Intent.EXTRA_STREAM, uri)
 
-                        startActivityForResult(itemView.context as ShipActivity, Intent.createChooser(intent,"Share Image"), SHARE_IMAGE, null)
+                        startActivityForResult(activity, Intent.createChooser(intent,"Share Image"), App.SHARE_IMAGE, null)
 
                         file.deleteOnExit()
                     }
                 }
+            }
+
+            overlay.btn_save.onClick {
+                API.downloadAndSave(
+                    skin.title?.toLowerCase(Locale.getDefault())?.replace(" ", "-") ?: "unkown",
+                    skin.image ?: "",
+                    itemView
+                )
             }
 
             ImageViewer.Builder(itemView.context, arrayOf(skin.image))

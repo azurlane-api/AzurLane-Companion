@@ -22,4 +22,6 @@
     <string name="soon">Soon™</string>
     <string name="ship_avatar">ship avatar</string>
     <string name="ship_name_example">Example</string>
+    <string name="btn_download_description">download</string>
+    <string name="btn_share_description">share</string>
 </resources>

@@ -9,6 +9,7 @@ import android.view.animation.AlphaAnimation
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
+import androidx.core.app.ActivityCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
@@ -34,6 +35,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         overridePendingTransition(R.anim.fadein, R.anim.fadeout)
         setContentView(R.layout.activity_main)
+
+        if (!App.hasPermissions(this)) {
+            ActivityCompat.requestPermissions(this, App.permissions, App.REQUEST_PERMISSION)
+        }
 
         val stringShips = intent.getStringExtra("ships")
         if (!stringShips.isNullOrBlank()) {

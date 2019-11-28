@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
-import info.kurozeropb.azurlane.adapter.SHARE_IMAGE
 import info.kurozeropb.azurlane.adapter.ViewPagerAdapter
 import info.kurozeropb.azurlane.adapter.file
 import info.kurozeropb.azurlane.fragments.GeneralInfo
@@ -36,7 +35,7 @@ class ShipActivity : AppCompatActivity() {
         // If the user canceled the action just return on do nothing
         if (resultCode == RESULT_CANCELED) return
         when (requestCode) {
-            SHARE_IMAGE -> { // Delete temp file after sharing an image
+            App.SHARE_IMAGE -> { // Delete temp file after sharing an image
                 try {
                     if (file.exists() && resultCode == RESULT_OK) {
                         Thread.sleep(1_000) // Stupid result doesn't actually wait for the intent to finish sending...

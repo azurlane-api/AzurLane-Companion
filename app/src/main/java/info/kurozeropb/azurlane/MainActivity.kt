@@ -54,11 +54,6 @@ class MainActivity : AppCompatActivity() {
         val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, ships.map { it.name })
         et_search_bar.setAdapter(adapter)
 
-        btn_search.onClick {
-            val name = et_search_bar.text.toString()
-            searchShip(name, this@MainActivity, mainActivity)
-        }
-
         et_search_bar.onEditorAction { _, actionId, _ ->
             when (actionId) {
                 EditorInfo.IME_ACTION_SEARCH -> {
@@ -99,7 +94,6 @@ class MainActivity : AppCompatActivity() {
 
             view.progressBarHolder.animation = inAnimation
             view.progressBarHolder.visibility = View.VISIBLE
-            view.btn_search.isEnabled = false
 
             API.getShip(name) {
                 val (response, exception) = this
@@ -108,7 +102,6 @@ class MainActivity : AppCompatActivity() {
                         response != null -> {
                             view.progressBarHolder.animation = outAnimation
                             view.progressBarHolder.visibility = View.GONE
-                            view.btn_search.isEnabled = true
 
                             val intent = Intent(context, ShipActivity::class.java)
                             intent.putExtra("name", name)
@@ -118,7 +111,6 @@ class MainActivity : AppCompatActivity() {
                         exception != null -> {
                             view.progressBarHolder.animation = outAnimation
                             view.progressBarHolder.visibility = View.GONE
-                            view.btn_search.isEnabled = true
 
                             Timer().schedule(200) {
                                 Snackbar.make(view, exception.message ?: "Unkown Error", Snackbar.LENGTH_LONG).show()

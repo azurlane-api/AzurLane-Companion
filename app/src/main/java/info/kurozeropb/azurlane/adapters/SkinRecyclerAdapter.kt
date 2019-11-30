@@ -1,5 +1,6 @@
-package info.kurozeropb.azurlane.adapter
+package info.kurozeropb.azurlane.adapters
 
+import android.app.Activity
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,19 +9,23 @@ import info.kurozeropb.azurlane.responses.Skin
 
 class SkinRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var images = listOf<Skin>()
+    private lateinit var activity: Activity
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return ImageViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.skin, parent, false))
+        return ImageViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.card_skin, parent, false))
     }
 
     override fun getItemCount(): Int = images.size
 
     override fun onBindViewHolder(viewHolder: RecyclerView.ViewHolder, position: Int) {
         val holder = viewHolder as ImageViewHolder
-        holder.bindView(images[position])
+        holder.bindView(images[position], activity)
     }
 
-    fun setImages(imgs: List<Skin>) {
-        this.images = imgs
+    fun setImages(images: List<Skin>, activity: Activity) {
+        this.images = images
+        this.activity = activity
         notifyDataSetChanged()
     }
+
 }

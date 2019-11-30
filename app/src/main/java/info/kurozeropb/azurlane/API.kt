@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package info.kurozeropb.azurlane
 
 import android.content.Context
@@ -6,6 +8,8 @@ import android.net.Uri
 import android.os.Build
 import android.os.Environment
 import android.view.View
+import android.view.animation.AlphaAnimation
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.fuel.httpGet
@@ -18,12 +22,13 @@ import kotlinx.coroutines.launch
 import java.lang.Exception
 import com.github.kittinunf.result.Result
 import com.google.android.material.snackbar.Snackbar
-import info.kurozeropb.azurlane.responses.AllShip
 import info.kurozeropb.azurlane.responses.AllShipsResponse
-import kotlinx.coroutines.withContext
+import info.kurozeropb.azurlane.ui.ShipActivity
+import kotlinx.android.synthetic.main.content_main.view.*
 import java.io.File
 import java.io.FileOutputStream
 import java.util.*
+import kotlin.concurrent.schedule
 
 object API {
     const val baseUrl = "https://azurlane-api.herokuapp.com/v2"
@@ -129,6 +134,49 @@ object API {
                 err != null -> {
                     GlobalScope.launch(Dispatchers.Main) {
                         Toast.makeText(view.context, err.message ?: "ERROR", Toast.LENGTH_LONG).show()
+                    }
+                }
+            }
+        }
+    }
+
+    fun searchShip(name: String, view: View) {
+        val imm = view.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
+
+        if (name.isBlank()) {
+            Snackbar.make(view, "Name can't be empty", Snackbar.LENGTH_LONG)
+            return
+        }
+
+        val inAnimation = AlphaAnimation(0f, 1f)
+        inAnimation.duration = 200
+        val outAnimation = AlphaAnimation(1f, 0f)
+        outAnimation.duration = 200
+
+        view.progressBarHolder.animation = inAnimation
+        view.progressBarHolder.visibility = View.VISIBLE
+
+        getShip(name) {
+            val (response, exception) = this
+            GlobalScope.launch(Dispatchers.Main) {
+                when {
+                    response != null -> {
+                        view.progressBarHolder.animation = outAnimation
+                        view.progressBarHolder.visibility = View.GONE
+
+                        val intent = Intent(view.context, ShipActivity::class.java)
+                        intent.putExtra("name", name)
+                        intent.putExtra("ship", Gson().toJson(response.ship))
+                        view.context.startActivity(intent)
+                    }
+                    exception != null -> {
+                        view.progressBarHolder.animation = outAnimation
+                        view.progressBarHolder.visibility = View.GONE
+
+                        Timer().schedule(200) {
+                            Snackbar.make(view, exception.message ?: "Unkown Error", Snackbar.LENGTH_LONG).show()
+                        }
                     }
                 }
             }

@@ -1,20 +1,27 @@
-package info.kurozeropb.azurlane
+package info.kurozeropb.azurlane.ui
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
-import info.kurozeropb.azurlane.adapter.ViewPagerAdapter
-import info.kurozeropb.azurlane.adapter.file
+import com.google.gson.Gson
+import info.kurozeropb.azurlane.App
+import info.kurozeropb.azurlane.R
+import info.kurozeropb.azurlane.adapters.ViewPagerAdapter
+import info.kurozeropb.azurlane.adapters.file
 import info.kurozeropb.azurlane.fragments.GeneralInfo
 import info.kurozeropb.azurlane.fragments.StatsInfo
+import info.kurozeropb.azurlane.responses.Ship
 import kotlinx.android.synthetic.main.activity_ship.*
 
 class ShipActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        overridePendingTransition(R.anim.fadein, R.anim.fadeout)
+        overridePendingTransition(
+            R.anim.fadein,
+            R.anim.fadeout
+        )
         setContentView(R.layout.activity_ship)
 
         val name = intent.getStringExtra("name")
@@ -23,9 +30,25 @@ class ShipActivity : AppCompatActivity() {
             return
         }
 
-        setupViewPager().also {
-            tl_info.setupWithViewPager(viewpager)
+        val json = intent.getStringExtra("ship")
+        if (json.isNullOrBlank()) {
+            Snackbar.make(shipActivity, "Could not find ship", Snackbar.LENGTH_LONG).show()
+            return
         }
+
+        val ship = Gson().fromJson(json, Ship::class.java)
+
+        val adapter = ViewPagerAdapter(supportFragmentManager)
+        adapter.apply {
+            addFragment(
+                GeneralInfo(
+                    name,
+                    ship
+                ), "General")
+            addFragment(StatsInfo(), "Stats")
+        }
+        viewpager.adapter = adapter
+        tl_info.setupWithViewPager(viewpager)
     }
 
     // Whenever we get a result from an intent
@@ -53,14 +76,5 @@ class ShipActivity : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         finish()
-    }
-
-    private fun setupViewPager() {
-        val adapter = ViewPagerAdapter(supportFragmentManager)
-        adapter.apply {
-            addFragment(GeneralInfo(), "General")
-            addFragment(StatsInfo(), "Stats")
-        }
-        viewpager.adapter = adapter
     }
 }

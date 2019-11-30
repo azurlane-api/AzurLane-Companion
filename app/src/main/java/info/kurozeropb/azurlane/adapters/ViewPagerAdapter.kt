@@ -1,4 +1,4 @@
-package info.kurozeropb.azurlane.adapter
+package info.kurozeropb.azurlane.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

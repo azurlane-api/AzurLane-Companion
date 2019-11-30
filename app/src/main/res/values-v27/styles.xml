@@ -8,11 +8,18 @@
         <item name="android:statusBarColor">@color/white</item>
         <item name="android:windowLightStatusBar">true</item>
 
+        <item name="drawerArrowStyle">@style/DrawerIconStyle</item>
+
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:windowTranslucentNavigation">false</item>
 
         <!-- v27 -->
         <item name="android:navigationBarColor">@color/white</item>
         <item name="android:windowLightNavigationBar">true</item>
+    </style>
+
+    <style name="AppTheme.DarkNavBar">
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
     </style>
 </resources>

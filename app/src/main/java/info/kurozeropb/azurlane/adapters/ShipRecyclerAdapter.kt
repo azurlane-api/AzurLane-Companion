@@ -1,4 +1,4 @@
-package info.kurozeropb.azurlane.adapter
+package info.kurozeropb.azurlane.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +9,7 @@ import info.kurozeropb.azurlane.responses.AllShip
 import info.kurozeropb.azurlane.responses.Ships
 
 class ShipRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private lateinit var mainActivity: View
+    private lateinit var mainView: View
     private var images = listOf<AllShip>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -20,12 +20,12 @@ class ShipRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onBindViewHolder(viewHolder: RecyclerView.ViewHolder, position: Int) {
         val holder = viewHolder as ShipViewHolder
-        holder.bindView(images[position], this.mainActivity)
+        holder.bindView(images[position], mainView)
     }
 
-    fun setImages(imgs: Ships, view: View) {
-        this.mainActivity = view
-        this.images = imgs
+    fun setImages(images: Ships, mainView: View) {
+        this.mainView = mainView
+        this.images = images
         notifyDataSetChanged()
     }
 }

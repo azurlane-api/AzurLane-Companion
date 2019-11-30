@@ -95,7 +95,7 @@
             android:layout_height="320dp"
             android:layout_gravity="center_horizontal"
             android:orientation="horizontal"
-            tools:listitem="@layout/skin" />
+            tools:listitem="@layout/card_skin" />
 
         <TextView
             android:id="@+id/tv_artist"

@@ -1,8 +1,9 @@
 @file:Suppress("DEPRECATION")
 
-package info.kurozeropb.azurlane.adapter
+package info.kurozeropb.azurlane.adapters
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Environment
@@ -14,14 +15,11 @@ import com.google.android.material.snackbar.Snackbar
 import com.hendraanggrian.pikasso.into
 import com.hendraanggrian.pikasso.picasso
 import com.stfalcon.frescoimageviewer.ImageViewer
-import info.kurozeropb.azurlane.API
-import info.kurozeropb.azurlane.App
-import info.kurozeropb.azurlane.R
-import info.kurozeropb.azurlane.ShipActivity
-import info.kurozeropb.azurlane.helper.GlideApp
+import info.kurozeropb.azurlane.*
+import info.kurozeropb.azurlane.helpers.GlideApp
 import info.kurozeropb.azurlane.responses.Skin
 import kotlinx.android.synthetic.main.overlay.view.*
-import kotlinx.android.synthetic.main.skin.view.*
+import kotlinx.android.synthetic.main.card_skin.view.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import java.io.ByteArrayOutputStream
 import java.io.File
@@ -33,10 +31,8 @@ lateinit var file: File
 
 class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    private val activity = itemView.context as ShipActivity
-
     @SuppressLint("InflateParams")
-    fun bindView(skin: Skin) {
+    fun bindView(skin: Skin, activity: Activity) {
         itemView.title_skin.text = skin.title ?: ""
         GlideApp.with(itemView.context)
             .load(skin.image)

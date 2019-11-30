@@ -18,34 +18,33 @@ import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
-import com.google.gson.Gson
 import com.hendraanggrian.pikasso.into
 import com.hendraanggrian.pikasso.picasso
 import com.stfalcon.frescoimageviewer.ImageViewer
 import info.kurozeropb.azurlane.API
 import info.kurozeropb.azurlane.App
 import info.kurozeropb.azurlane.R
-import info.kurozeropb.azurlane.adapter.SkinRecyclerAdapter
-import info.kurozeropb.azurlane.adapter.file
-import info.kurozeropb.azurlane.helper.GlideApp
-import info.kurozeropb.azurlane.helper.ItemDecoration
+import info.kurozeropb.azurlane.adapters.SkinRecyclerAdapter
+import info.kurozeropb.azurlane.adapters.file
+import info.kurozeropb.azurlane.helpers.GlideApp
+import info.kurozeropb.azurlane.helpers.ItemDecoration
 import info.kurozeropb.azurlane.responses.Ship
-import kotlinx.android.synthetic.main.activity_ship.*
 import kotlinx.android.synthetic.main.overlay.view.*
-import kotlinx.android.synthetic.main.tab_layout_general.view.*
+import kotlinx.android.synthetic.main.fragment_tab_general.view.*
 import org.jetbrains.anko.backgroundColor
 import org.jetbrains.anko.backgroundDrawable
 import org.jetbrains.anko.sdk27.coroutines.onClick
+import org.jetbrains.anko.support.v4.act
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import java.util.*
 
-class GeneralInfo : Fragment() {
+class GeneralInfo(val name: String, val ship: Ship) : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.tab_layout_general, container, false)
+        return inflater.inflate(R.layout.fragment_tab_general, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -66,14 +65,6 @@ class GeneralInfo : Fragment() {
             "priority" to ContextCompat.getColor(view.context, R.color.priority),
             "unreleased" to ContextCompat.getColor(view.context, R.color.unreleased)
         )
-
-        val json = activity?.intent?.getStringExtra("ship")
-        if (json.isNullOrBlank()) {
-            Snackbar.make(shipActivity, "Could not get ship data", Snackbar.LENGTH_LONG).show()
-            return
-        }
-
-        val ship = Gson().fromJson(json, Ship::class.java)
 
         if (ship.rarity != null) {
             val rarity = ship.rarity.toLowerCase(Locale.getDefault())
@@ -177,7 +168,7 @@ class GeneralInfo : Fragment() {
         val adapter = SkinRecyclerAdapter()
         val skins = ship.skins.subList(1, ship.skins.size)
         if (skins.isNullOrEmpty()) view.rv_row.visibility = View.GONE
-        adapter.setImages(skins)
+        adapter.setImages(skins, act)
         view.rv_row.adapter = adapter
     }
 

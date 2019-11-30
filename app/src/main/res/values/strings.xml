@@ -24,4 +24,9 @@
     <string name="ship_name_example">Example</string>
     <string name="btn_download_description">download</string>
     <string name="btn_share_description">share</string>
+    <string name="toolbar_title">Azur Lane</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="toolbar_title_equipment">Equipment</string>
+    <string name="toolbar_title_ships">Ships</string>
 </resources>

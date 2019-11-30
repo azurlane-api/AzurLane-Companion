@@ -1,4 +1,4 @@
-package info.kurozeropb.azurlane.adapter
+package info.kurozeropb.azurlane.adapters
 
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
@@ -11,9 +11,9 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
-import info.kurozeropb.azurlane.MainActivity
+import info.kurozeropb.azurlane.API
 import info.kurozeropb.azurlane.R
-import info.kurozeropb.azurlane.helper.GlideApp
+import info.kurozeropb.azurlane.helpers.GlideApp
 import info.kurozeropb.azurlane.responses.AllShip
 import kotlinx.android.synthetic.main.card_ship.view.*
 import org.jetbrains.anko.backgroundColor
@@ -26,7 +26,7 @@ class ShipViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val requestOptions = RequestOptions()
         .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
 
-    fun bindView(ship: AllShip, mainActivity: View) {
+    fun bindView(ship: AllShip, mainView: View) {
         val rainbow = GradientDrawable(
             GradientDrawable.Orientation.TL_BR, intArrayOf(
                 ContextCompat.getColor(itemView.context, R.color.rainbow_yellow),
@@ -47,7 +47,7 @@ class ShipViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         itemView.tv_ship_name.text = ship.name ?: "-"
         itemView.cv_ship.onClick {
-            MainActivity.searchShip(ship.name ?: "", itemView.context, mainActivity)
+            API.searchShip(ship.name ?: "", mainView)
         }
 
         if (ship.rarity != null) {

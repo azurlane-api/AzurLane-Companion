@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:hardwareAccelerated="true">
-        <activity android:name=".SplashActivity"
+        <activity android:name=".ui.SplashActivity"
             android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity">
             <intent-filter>
@@ -25,11 +25,25 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainActivity"
+        <activity android:name=".ui.MainActivity"
+            android:theme="@style/AppTheme.DarkNavBar"
             android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity" />
 
-        <activity android:name=".ShipActivity"
+        <activity android:name=".ui.ShipActivity"
+            android:screenOrientation="sensorPortrait"
+            tools:ignore="LockedOrientationActivity" />
+
+        <activity android:name=".ui.SettingsActivity"
+            android:screenOrientation="sensorPortrait"
+            tools:ignore="LockedOrientationActivity" />
+
+        <activity android:name=".ui.EquipmentListActivity"
+            android:theme="@style/AppTheme.DarkNavBar"
+            android:screenOrientation="sensorPortrait"
+            tools:ignore="LockedOrientationActivity" />
+
+        <activity android:name=".ui.EquipmentActivity"
             android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity" />
 

@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
+
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -7,7 +9,7 @@ plugins {
 
 object Versions {
     private const val versionMajor = 1
-    private  const val versionMinor = 2
+    private  const val versionMinor = 3
     private const val versionPatch = 0
 
     const val minSdk = 24
@@ -37,6 +39,15 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    (kotlinOptions as KotlinJvmOptions).apply {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
     externalNativeBuild {
         cmake {
             setVersion("3.10.2")
@@ -53,6 +64,12 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.1.0")
     implementation("androidx.core:core-ktx:1.1.0")
     implementation("androidx.constraintlayout:constraintlayout:1.1.3")
+    implementation("androidx.navigation:navigation-fragment:2.1.0")
+    implementation("androidx.navigation:navigation-ui:2.1.0")
+    implementation("androidx.lifecycle:lifecycle-extensions:2.1.0")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.1.0")
+    implementation("androidx.navigation:navigation-ui-ktx:2.1.0")
+
     implementation("org.jetbrains.anko:anko:0.10.8")
     implementation("org.jetbrains.anko:anko-design:0.10.8")
     implementation("com.github.kittinunf.fuel:fuel:2.2.1")

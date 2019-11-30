@@ -24,7 +24,7 @@ android {
     compileSdkVersion(Versions.targetSdk)
 
     defaultConfig {
-        applicationId = "info.kurozeropb.azurlane"
+        applicationId = "info.kurozeropb.alcompanion"
         minSdkVersion(Versions.minSdk)
         targetSdkVersion(Versions.targetSdk)
         versionCode = Versions.generateVersionCode()

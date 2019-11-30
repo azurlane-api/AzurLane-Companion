@@ -1,4 +1,4 @@
-package info.kurozeropb.azurlane
+package info.kurozeropb.alcompanion
 
 import org.junit.Test
 

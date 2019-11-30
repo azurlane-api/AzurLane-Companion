@@ -1,17 +1,17 @@
-package info.kurozeropb.azurlane.ui
+package info.kurozeropb.alcompanion.ui
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
-import info.kurozeropb.azurlane.App
-import info.kurozeropb.azurlane.R
-import info.kurozeropb.azurlane.adapters.ViewPagerAdapter
-import info.kurozeropb.azurlane.adapters.file
-import info.kurozeropb.azurlane.fragments.GeneralInfo
-import info.kurozeropb.azurlane.fragments.StatsInfo
-import info.kurozeropb.azurlane.responses.Ship
+import info.kurozeropb.alcompanion.App
+import info.kurozeropb.alcompanion.R
+import info.kurozeropb.alcompanion.adapters.ViewPagerAdapter
+import info.kurozeropb.alcompanion.adapters.file
+import info.kurozeropb.alcompanion.fragments.GeneralInfo
+import info.kurozeropb.alcompanion.fragments.StatsInfo
+import info.kurozeropb.alcompanion.responses.Ship
 import kotlinx.android.synthetic.main.activity_ship.*
 
 class ShipActivity : AppCompatActivity() {

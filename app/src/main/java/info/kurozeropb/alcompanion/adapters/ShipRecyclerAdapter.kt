@@ -1,12 +1,12 @@
-package info.kurozeropb.azurlane.adapters
+package info.kurozeropb.alcompanion.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import info.kurozeropb.azurlane.R
-import info.kurozeropb.azurlane.responses.AllShip
-import info.kurozeropb.azurlane.responses.Ships
+import info.kurozeropb.alcompanion.R
+import info.kurozeropb.alcompanion.responses.AllShip
+import info.kurozeropb.alcompanion.responses.Ships
 
 class ShipRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private lateinit var mainView: View

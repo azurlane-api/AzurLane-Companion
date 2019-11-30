@@ -1,11 +1,11 @@
-package info.kurozeropb.azurlane.adapters
+package info.kurozeropb.alcompanion.adapters
 
 import android.app.Activity
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import info.kurozeropb.azurlane.R
-import info.kurozeropb.azurlane.responses.Skin
+import info.kurozeropb.alcompanion.R
+import info.kurozeropb.alcompanion.responses.Skin
 
 class SkinRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var images = listOf<Skin>()

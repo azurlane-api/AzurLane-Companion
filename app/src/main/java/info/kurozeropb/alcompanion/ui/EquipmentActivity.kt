@@ -1,4 +1,4 @@
-package info.kurozeropb.azurlane.ui
+package info.kurozeropb.alcompanion.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

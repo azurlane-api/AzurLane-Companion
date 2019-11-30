@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION")
 
-package info.kurozeropb.azurlane.adapters
+package info.kurozeropb.alcompanion.adapters
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -15,9 +15,9 @@ import com.google.android.material.snackbar.Snackbar
 import com.hendraanggrian.pikasso.into
 import com.hendraanggrian.pikasso.picasso
 import com.stfalcon.frescoimageviewer.ImageViewer
-import info.kurozeropb.azurlane.*
-import info.kurozeropb.azurlane.helpers.GlideApp
-import info.kurozeropb.azurlane.responses.Skin
+import info.kurozeropb.alcompanion.*
+import info.kurozeropb.alcompanion.helpers.GlideApp
+import info.kurozeropb.alcompanion.responses.Skin
 import kotlinx.android.synthetic.main.overlay.view.*
 import kotlinx.android.synthetic.main.card_skin.view.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
@@ -81,7 +81,7 @@ class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             }
 
             overlay.btn_save.onClick {
-                API.downloadAndSave(
+                Api.downloadAndSave(
                     skin.title?.toLowerCase(Locale.getDefault())?.replace(" ", "-") ?: "unkown",
                     skin.image ?: "",
                     itemView

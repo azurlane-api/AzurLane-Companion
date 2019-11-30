@@ -1,4 +1,4 @@
-package info.kurozeropb.azurlane.responses
+package info.kurozeropb.alcompanion.responses
 
 typealias Ships = List<AllShip>
 

@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION")
 
-package info.kurozeropb.azurlane.fragments
+package info.kurozeropb.alcompanion.fragments
 
 import android.content.Intent
 import android.graphics.Bitmap
@@ -12,7 +12,6 @@ import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
@@ -21,14 +20,14 @@ import com.google.android.material.snackbar.Snackbar
 import com.hendraanggrian.pikasso.into
 import com.hendraanggrian.pikasso.picasso
 import com.stfalcon.frescoimageviewer.ImageViewer
-import info.kurozeropb.azurlane.API
-import info.kurozeropb.azurlane.App
-import info.kurozeropb.azurlane.R
-import info.kurozeropb.azurlane.adapters.SkinRecyclerAdapter
-import info.kurozeropb.azurlane.adapters.file
-import info.kurozeropb.azurlane.helpers.GlideApp
-import info.kurozeropb.azurlane.helpers.ItemDecoration
-import info.kurozeropb.azurlane.responses.Ship
+import info.kurozeropb.alcompanion.Api
+import info.kurozeropb.alcompanion.App
+import info.kurozeropb.alcompanion.R
+import info.kurozeropb.alcompanion.adapters.SkinRecyclerAdapter
+import info.kurozeropb.alcompanion.adapters.file
+import info.kurozeropb.alcompanion.helpers.GlideApp
+import info.kurozeropb.alcompanion.helpers.ItemDecoration
+import info.kurozeropb.alcompanion.responses.Ship
 import kotlinx.android.synthetic.main.overlay.view.*
 import kotlinx.android.synthetic.main.fragment_tab_general.view.*
 import org.jetbrains.anko.backgroundColor
@@ -102,7 +101,7 @@ class GeneralInfo(val name: String, val ship: Ship) : Fragment() {
                         if (dir.exists().not())
                             dir.mkdirs()
 
-                        file = File(dir, "${ship.skins[0].title?.toLowerCase(Locale.getDefault())?.replace(" ", "-")}.png")
+                        file = File(dir, "share-${ship.skins[0].title?.toLowerCase(Locale.getDefault())?.replace(" ", "-")}.png")
 
                         try {
                             file.createNewFile()
@@ -118,13 +117,7 @@ class GeneralInfo(val name: String, val ship: Ship) : Fragment() {
                         val uri = FileProvider.getUriForFile(view.context, view.context.applicationContext.packageName + ".ImageFileProvider", file)
                         intent.putExtra(Intent.EXTRA_STREAM, uri)
 
-                        val parent = if (activity?.parent != null) {
-                            activity?.parent
-                        } else {
-                            file.delete()
-                            return@onLoaded
-                        }
-                        ActivityCompat.startActivityForResult(parent!!, Intent.createChooser(intent, "Share Image"), App.SHARE_IMAGE, null)
+                        startActivityForResult(Intent.createChooser(intent,"Share Image"), App.SHARE_IMAGE, null)
 
                         file.deleteOnExit()
                     }
@@ -132,7 +125,7 @@ class GeneralInfo(val name: String, val ship: Ship) : Fragment() {
             }
 
             overlay.btn_save.onClick {
-                API.downloadAndSave(
+                Api.downloadAndSave(
                     ship.skins[0].title?.toLowerCase(Locale.getDefault())?.replace(" ", "-") ?: "unkown",
                     ship.skins[0].image ?: "",
                     view

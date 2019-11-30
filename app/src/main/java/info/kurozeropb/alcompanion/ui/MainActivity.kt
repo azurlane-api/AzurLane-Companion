@@ -1,4 +1,4 @@
-package info.kurozeropb.azurlane.ui
+package info.kurozeropb.alcompanion.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -16,11 +16,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.navigation.NavigationView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import info.kurozeropb.azurlane.API
-import info.kurozeropb.azurlane.App
-import info.kurozeropb.azurlane.R
-import info.kurozeropb.azurlane.adapters.ShipRecyclerAdapter
-import info.kurozeropb.azurlane.responses.Ships
+import info.kurozeropb.alcompanion.Api
+import info.kurozeropb.alcompanion.App
+import info.kurozeropb.alcompanion.R
+import info.kurozeropb.alcompanion.adapters.ShipRecyclerAdapter
+import info.kurozeropb.alcompanion.responses.Ships
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             when (actionId) {
                 EditorInfo.IME_ACTION_SEARCH -> {
                     val name = et_search_bar.text.toString()
-                    API.searchShip(name, contentMain)
+                    Api.searchShip(name, contentMain)
                 }
             }
         }

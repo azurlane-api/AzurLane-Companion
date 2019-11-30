@@ -1,4 +1,4 @@
-package info.kurozeropb.azurlane.ui
+package info.kurozeropb.alcompanion.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,8 +11,8 @@ import com.facebook.imagepipeline.decoder.SimpleProgressiveJpegConfig
 import com.github.kittinunf.fuel.core.FuelManager
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
-import info.kurozeropb.azurlane.API
-import info.kurozeropb.azurlane.R
+import info.kurozeropb.alcompanion.Api
+import info.kurozeropb.alcompanion.R
 import kotlinx.android.synthetic.main.activity_splash.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -24,17 +24,11 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        overridePendingTransition(
-            R.anim.fadein,
-            R.anim.fadeout
-        )
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout)
         setContentView(R.layout.activity_splash)
 
-        FuelManager.instance.basePath = API.baseUrl
-        FuelManager.instance.baseHeaders = mapOf("Authorization" to (API.getSecretKey()
-            ?: ""), "User-Agent" to "AzurLaneCompanion/v${API.getVersionName(
-            this
-        )} (${API.getVersionCode(this)}) (https://github.com/azurlane-api/AzurLaneInfo)")
+        FuelManager.instance.basePath = Api.baseUrl
+        FuelManager.instance.baseHeaders = mapOf("Authorization" to (Api.getSecretKey() ?: ""), "User-Agent" to "AzurLaneCompanion/v${Api.getVersionName(this)} (${Api.getVersionCode(this)}) (https://github.com/azurlane-api/AzurLaneInfo)")
 
         val flags = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_FULLSCREEN or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
 
@@ -54,31 +48,22 @@ class SplashActivity : AppCompatActivity() {
             .build()
         Fresco.initialize(this, config)
 
-        val pulse = AnimationUtils.loadAnimation(this,
-            R.anim.pulse
-        )
+        val pulse = AnimationUtils.loadAnimation(this, R.anim.pulse)
         logo.startAnimation(pulse)
 
-        API.getAllShips {
+        Api.getAllShips {
             val (response, exception) = this
             GlobalScope.launch(Dispatchers.Main) {
                 when {
                     response != null -> {
-                        val intent = Intent(
-                            this@SplashActivity,
-                            MainActivity::class.java
-                        )
+                        val intent = Intent(this@SplashActivity, MainActivity::class.java)
                         intent.putExtra("ships", Gson().toJson(response.ships))
                         startActivity(intent)
                         finish()
                     }
                     exception != null -> {
                         Timer().schedule(200) {
-                            Snackbar.make(
-                                splashActivity,
-                                exception.message ?: "Unkown Error",
-                                Snackbar.LENGTH_LONG
-                            ).show()
+                            Snackbar.make(splashActivity, exception.message ?: "Unkown Error", Snackbar.LENGTH_LONG).show()
                         }
                     }
                 }

@@ -1,4 +1,4 @@
-package info.kurozeropb.azurlane.ui
+package info.kurozeropb.alcompanion.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,7 +7,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.google.android.material.navigation.NavigationView
-import info.kurozeropb.azurlane.R
+import info.kurozeropb.alcompanion.R
 import kotlinx.android.synthetic.main.activity_equipment_list.*
 import kotlinx.android.synthetic.main.app_bar_equipment.*
 

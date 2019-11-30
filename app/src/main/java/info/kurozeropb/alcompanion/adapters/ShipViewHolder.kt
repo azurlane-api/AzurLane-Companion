@@ -1,4 +1,4 @@
-package info.kurozeropb.azurlane.adapters
+package info.kurozeropb.alcompanion.adapters
 
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
@@ -11,10 +11,10 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
-import info.kurozeropb.azurlane.API
-import info.kurozeropb.azurlane.R
-import info.kurozeropb.azurlane.helpers.GlideApp
-import info.kurozeropb.azurlane.responses.AllShip
+import info.kurozeropb.alcompanion.Api
+import info.kurozeropb.alcompanion.R
+import info.kurozeropb.alcompanion.helpers.GlideApp
+import info.kurozeropb.alcompanion.responses.AllShip
 import kotlinx.android.synthetic.main.card_ship.view.*
 import org.jetbrains.anko.backgroundColor
 import org.jetbrains.anko.backgroundDrawable
@@ -47,7 +47,7 @@ class ShipViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         itemView.tv_ship_name.text = ship.name ?: "-"
         itemView.cv_ship.onClick {
-            API.searchShip(ship.name ?: "", mainView)
+            Api.searchShip(ship.name ?: "", mainView)
         }
 
         if (ship.rarity != null) {

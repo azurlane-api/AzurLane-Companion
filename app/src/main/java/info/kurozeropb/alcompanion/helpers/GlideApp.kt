@@ -1,4 +1,4 @@
-package info.kurozeropb.azurlane.helpers
+package info.kurozeropb.alcompanion.helpers
 
 import android.content.Context
 import com.bumptech.glide.GlideBuilder

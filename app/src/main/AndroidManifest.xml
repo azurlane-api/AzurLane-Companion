@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="info.kurozeropb.azurlane">
+    package="info.kurozeropb.alcompanion">
     
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:hardwareAccelerated="true">
-        <activity android:name=".ui.SplashActivity"
+        <activity android:name="info.kurozeropb.alcompanion.ui.SplashActivity"
             android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity">
             <intent-filter>
@@ -25,31 +25,31 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.MainActivity"
+        <activity android:name="info.kurozeropb.alcompanion.ui.MainActivity"
             android:theme="@style/AppTheme.DarkNavBar"
             android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity" />
 
-        <activity android:name=".ui.ShipActivity"
+        <activity android:name="info.kurozeropb.alcompanion.ui.ShipActivity"
             android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity" />
 
-        <activity android:name=".ui.SettingsActivity"
+        <activity android:name="info.kurozeropb.alcompanion.ui.SettingsActivity"
             android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity" />
 
-        <activity android:name=".ui.EquipmentListActivity"
+        <activity android:name="info.kurozeropb.alcompanion.ui.EquipmentListActivity"
             android:theme="@style/AppTheme.DarkNavBar"
             android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity" />
 
-        <activity android:name=".ui.EquipmentActivity"
+        <activity android:name="info.kurozeropb.alcompanion.ui.EquipmentActivity"
             android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="info.kurozeropb.azurlane.ImageFileProvider"
+            android:authorities="info.kurozeropb.alcompanion.ImageFileProvider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

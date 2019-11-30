@@ -1,11 +1,11 @@
-package info.kurozeropb.azurlane.fragments
+package info.kurozeropb.alcompanion.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import info.kurozeropb.azurlane.R
+import info.kurozeropb.alcompanion.R
 
 class StatsInfo : Fragment() {
 

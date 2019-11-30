@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION")
 
-package info.kurozeropb.azurlane
+package info.kurozeropb.alcompanion
 
 import android.content.Context
 import android.content.Intent
@@ -14,23 +14,23 @@ import android.widget.Toast
 import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.fuel.httpGet
 import com.google.gson.Gson
-import info.kurozeropb.azurlane.responses.Response
-import info.kurozeropb.azurlane.responses.ShipResponse
+import info.kurozeropb.alcompanion.responses.Response
+import info.kurozeropb.alcompanion.responses.ShipResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.lang.Exception
 import com.github.kittinunf.result.Result
 import com.google.android.material.snackbar.Snackbar
-import info.kurozeropb.azurlane.responses.AllShipsResponse
-import info.kurozeropb.azurlane.ui.ShipActivity
+import info.kurozeropb.alcompanion.responses.AllShipsResponse
+import info.kurozeropb.alcompanion.ui.ShipActivity
 import kotlinx.android.synthetic.main.content_main.view.*
 import java.io.File
 import java.io.FileOutputStream
 import java.util.*
 import kotlin.concurrent.schedule
 
-object API {
+object Api {
     const val baseUrl = "https://azurlane-api.herokuapp.com/v2"
 
     init {

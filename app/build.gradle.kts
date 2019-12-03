@@ -9,7 +9,7 @@ plugins {
 
 object Versions {
     private const val versionMajor = 1
-    private  const val versionMinor = 4
+    private  const val versionMinor = 5
     private const val versionPatch = 0
 
     const val minSdk = 24
@@ -60,7 +60,7 @@ android {
 
 dependencies {
 //    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.60-eap-25")
+    implementation(kotlin("stdlib"))
     implementation("androidx.appcompat:appcompat:1.1.0")
     implementation("androidx.core:core-ktx:1.1.0")
     implementation("androidx.constraintlayout:constraintlayout:1.1.3")
@@ -88,7 +88,6 @@ dependencies {
 
     kapt("androidx.annotation:annotation:1.1.0")
     kapt("com.github.bumptech.glide:compiler:4.9.0")
-
 
     testImplementation("junit:junit:4.12")
     androidTestImplementation("androidx.test.ext:junit:1.1.1")

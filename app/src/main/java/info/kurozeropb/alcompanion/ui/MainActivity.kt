@@ -57,9 +57,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         nav_view.setNavigationItemSelectedListener(this)
 
-        val stringShips = intent.getStringExtra("ships")
-        if (!stringShips.isNullOrBlank()) {
-            ships = Gson().fromJson<Ships>(stringShips, object : TypeToken<Ships?>() {}.type)
+        val jsonships = intent.getStringExtra("ships")
+        if (!jsonships.isNullOrBlank()) {
+            ships = Gson().fromJson<Ships>(jsonships, object : TypeToken<Ships?>() {}.type)
             ships = ships.distinctBy { it.name } // TODO : Should be done by the api
         }
 

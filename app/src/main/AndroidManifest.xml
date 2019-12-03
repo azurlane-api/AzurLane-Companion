@@ -14,7 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:hardwareAccelerated="true">
+        android:hardwareAccelerated="true"
+        android:largeHeap="true">
+
         <activity android:name="info.kurozeropb.alcompanion.ui.SplashActivity"
             android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity">
@@ -56,6 +58,7 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths"/>
         </provider>
+
     </application>
 
 </manifest>

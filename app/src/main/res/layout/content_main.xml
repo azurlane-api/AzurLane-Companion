@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:id="@+id/contentMain"
     android:background="@color/background"
+    android:orientation="vertical"
     tools:context=".ui.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
@@ -32,65 +33,69 @@
             android:layout_gravity="center" />
     </FrameLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <FrameLayout
-            android:id="@+id/fl_search"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="9dp"
-            android:padding="5dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <AutoCompleteTextView
-                android:id="@+id/et_search_bar"
-                android:layout_width="300dp"
-                android:layout_height="40dp"
-                android:padding="10dp"
-                android:autofillHints=".AUTOFILL_HINT_PERSON_NAME"
-                android:hint="@string/search_hint"
-                android:imeOptions="actionSearch"
-                android:inputType="text"
-                android:background="@drawable/et_round"
-                android:drawableStart="@drawable/magnify"
-                android:drawableTint="@color/text"
-                android:textColor="@color/text"
-                android:drawablePadding="5dp"/>
-
-            <Button
-                android:id="@+id/btn_clear_search_bar"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginEnd="10dp"
-                android:layout_gravity="end|center_vertical"
-                android:background="@drawable/close"
-                android:backgroundTint="@color/text"
-                android:visibility="gone"/>
-
-        </FrameLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_ships"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        android:orientation="vertical"
-        tools:listitem="@layout/card_ship" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="8dp"
+            android:layout_gravity="center">
+
+            <FrameLayout
+                android:id="@+id/fl_search"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:padding="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <AutoCompleteTextView
+                    android:id="@+id/et_search_bar"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:padding="10dp"
+                    android:autofillHints=".AUTOFILL_HINT_PERSON_NAME"
+                    android:hint="@string/search_hint"
+                    android:imeOptions="actionSearch"
+                    android:inputType="text"
+                    android:background="@drawable/et_round"
+                    android:drawableStart="@drawable/magnify"
+                    android:drawableTint="@color/text"
+                    android:textColor="@color/text"
+                    android:drawablePadding="5dp"/>
+
+                <Button
+                    android:id="@+id/btn_clear_search_bar"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_gravity="end|center_vertical"
+                    android:background="@drawable/close"
+                    android:backgroundTint="@color/text"
+                    android:visibility="gone"/>
+
+            </FrameLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_ships"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:scrollbars="vertical"
+            android:orientation="vertical"
+            tools:listitem="@layout/card_ship" />
+
+    </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_to_top"
@@ -101,7 +106,9 @@
         android:src="@drawable/chevron_up"
         android:tint="@color/alice_blue"
         android:backgroundTint="@color/colorPrimaryDarker"
+        android:layout_alignBottom="@+id/linearLayout"
+        android:layout_alignEnd="@+id/linearLayout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

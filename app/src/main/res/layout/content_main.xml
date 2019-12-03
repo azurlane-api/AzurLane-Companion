@@ -68,12 +68,12 @@
 
             <Button
                 android:id="@+id/btn_clear_search_bar"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_marginEnd="5dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="10dp"
                 android:layout_gravity="end|center_vertical"
-                android:background="@drawable/close_circle_outline"
-                android:drawableTint="@color/text"
+                android:background="@drawable/close"
+                android:backgroundTint="@color/text"
                 android:visibility="gone"/>
 
         </FrameLayout>

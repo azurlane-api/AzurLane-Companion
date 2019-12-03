@@ -3,6 +3,7 @@ package info.kurozeropb.alcompanion.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.EditorInfo
@@ -13,6 +14,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -20,6 +22,7 @@ import info.kurozeropb.alcompanion.Api
 import info.kurozeropb.alcompanion.App
 import info.kurozeropb.alcompanion.R
 import info.kurozeropb.alcompanion.adapters.ShipRecyclerAdapter
+import info.kurozeropb.alcompanion.helpers.EndlessRecyclerViewScrollListener
 import info.kurozeropb.alcompanion.responses.Ships
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -30,6 +33,9 @@ import org.jetbrains.anko.sdk27.coroutines.onEditorAction
 lateinit var ships: Ships
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+    var oldPageSize = 0
+    var pageSize = 20
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,10 +63,31 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             ships = ships.distinctBy { it.name }
         }
 
-        rv_ships.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        val maxShips = ships.size
+
+        val showShips = ships.toMutableList().subList(oldPageSize, pageSize)
+        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        rv_ships.layoutManager = layoutManager
         val rvAdapter = ShipRecyclerAdapter()
-        rvAdapter.setImages(ships, contentMain)
+        rvAdapter.setImages(showShips, contentMain)
         rv_ships.adapter = rvAdapter
+
+        val scrollListener = object : EndlessRecyclerViewScrollListener(layoutManager) {
+            override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView) {
+                oldPageSize = pageSize
+                pageSize += 20
+                if (pageSize > maxShips) {
+                    pageSize = maxShips
+                }
+
+                val curSize = rvAdapter.itemCount
+                val moreShips = ships.subList(oldPageSize, pageSize)
+                showShips.addAll(moreShips)
+                view.post { rvAdapter.notifyItemRangeInserted(curSize, showShips.size - 1) }
+            }
+        }
+        // Adds the scroll listener to RecyclerView
+        rv_ships.addOnScrollListener(scrollListener)
 
         val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, ships.map { it.name })
         et_search_bar.setAdapter(adapter)

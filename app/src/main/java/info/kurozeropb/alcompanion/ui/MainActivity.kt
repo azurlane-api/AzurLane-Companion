@@ -30,7 +30,7 @@ import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.sdk27.coroutines.onEditorAction
 
 lateinit var ships: Ships
-const val pageSize = 20
+const val pageSize = 10
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 

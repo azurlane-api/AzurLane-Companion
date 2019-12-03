@@ -1,10 +1,13 @@
 package info.kurozeropb.alcompanion.ui
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.facebook.imagepipeline.core.ImagePipelineConfig
 import com.facebook.imagepipeline.decoder.SimpleProgressiveJpegConfig
@@ -20,12 +23,22 @@ import kotlinx.coroutines.launch
 import java.util.*
 import kotlin.concurrent.schedule
 
+lateinit var sharedPreferences: SharedPreferences
+
 class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         overridePendingTransition(R.anim.fadein, R.anim.fadeout)
         setContentView(R.layout.activity_splash)
+
+        sharedPreferences = getSharedPreferences("al-companion", Context.MODE_PRIVATE)
+        val darkmode = sharedPreferences.getBoolean("darkmode", false)
+        if (darkmode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
 
         FuelManager.instance.basePath = Api.baseUrl
         FuelManager.instance.baseHeaders = mapOf("Authorization" to (Api.getSecretKey() ?: ""), "User-Agent" to "AzurLaneCompanion/v${Api.getVersionName(this)} (${Api.getVersionCode(this)}) (https://github.com/azurlane-api/AzurLaneInfo)")
@@ -37,7 +50,7 @@ class SplashActivity : AppCompatActivity() {
         val decorView = window.decorView
         decorView.setOnSystemUiVisibilityChangeListener { visibility ->
             if ((visibility and View.SYSTEM_UI_FLAG_FULLSCREEN) == 0) {
-                decorView.systemUiVisibility = flags;
+                decorView.systemUiVisibility = flags
             }
         }
 

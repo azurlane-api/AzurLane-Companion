@@ -1,25 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
 
-        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:statusBarColor">@color/background</item>
         <item name="android:windowLightStatusBar">true</item>
 
         <item name="drawerArrowStyle">@style/DrawerIconStyle</item>
 
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:windowTranslucentNavigation">false</item>
+    </style>
 
-        <!-- v27 -->
-        <item name="android:navigationBarColor">@color/white</item>
-        <item name="android:windowLightNavigationBar">true</item>
+    <style name="AppTheme.Fullscreen">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
     </style>
 
     <style name="AppTheme.DarkNavBar">
         <item name="android:windowLightStatusBar">false</item>
-        <item name="android:windowLightNavigationBar">false</item>
     </style>
+
+    <style name="DrawerIconStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@color/alice_blue</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

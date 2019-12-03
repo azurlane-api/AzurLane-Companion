@@ -29,4 +29,5 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="toolbar_title_equipment">Equipment</string>
     <string name="toolbar_title_ships">Ships</string>
+    <string name="dark_mode_setting">Dark mode</string>
 </resources>

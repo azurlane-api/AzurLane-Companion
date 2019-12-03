@@ -9,6 +9,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:cardBackgroundColor="@color/cardBackground"
         app:cardUseCompatPadding="true"
         app:cardElevation="5dp"
         app:cardCornerRadius="5dp">
@@ -23,7 +24,7 @@
                 android:layout_height="50dp"
                 android:text="@string/skin_default_text"
                 android:gravity="center"
-                android:textColor="@android:color/black"
+                android:textColor="@color/text"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

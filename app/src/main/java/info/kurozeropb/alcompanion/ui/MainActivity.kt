@@ -38,6 +38,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
+        sharedPreferences.registerOnSharedPreferenceChangeListener(App::onSharedPreferencesChange)
+
         window.apply {
             statusBarColor = ContextCompat.getColor(this@MainActivity, R.color.colorPrimary)
             navigationBarColor = ContextCompat.getColor(this@MainActivity, R.color.colorPrimary)

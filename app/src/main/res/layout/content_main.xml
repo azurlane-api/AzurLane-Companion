@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/contentMain"
-    android:background="@android:color/white"
+    android:background="@color/background"
     tools:context=".ui.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
@@ -62,7 +62,8 @@
                 android:inputType="text"
                 android:background="@drawable/et_round"
                 android:drawableStart="@drawable/magnify"
-                android:drawableTint="@android:color/darker_gray"
+                android:drawableTint="@color/text"
+                android:textColor="@color/text"
                 android:drawablePadding="5dp"/>
 
             <Button
@@ -72,6 +73,7 @@
                 android:layout_marginEnd="5dp"
                 android:layout_gravity="end|center_vertical"
                 android:background="@drawable/close_circle_outline"
+                android:drawableTint="@color/text"
                 android:visibility="gone"/>
 
         </FrameLayout>

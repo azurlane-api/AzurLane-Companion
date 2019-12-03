@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
 
-        <item name="android:statusBarColor">@color/white</item>
-        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">@color/background</item>
+        <item name="android:windowLightStatusBar">false</item>
 
         <item name="drawerArrowStyle">@style/DrawerIconStyle</item>
 
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:windowTranslucentNavigation">false</item>
 
-        <!-- v28 -->
-        <item name="android:navigationBarColor">@color/white</item>
-        <item name="android:windowLightNavigationBar">true</item>
+        <!-- v27 -->
+        <item name="android:navigationBarColor">@color/background</item>
+        <item name="android:windowLightNavigationBar">false</item>
     </style>
 
     <style name="AppTheme.DarkNavBar">

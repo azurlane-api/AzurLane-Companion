@@ -1,7 +1,9 @@
 package info.kurozeropb.alcompanion
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
 
 
@@ -24,6 +26,17 @@ object App {
             }
         }
         return true
+    }
+
+    fun onSharedPreferencesChange(sharedPreferences: SharedPreferences, key: String) {
+        if (key == "darkmode") {
+            val darkmode = sharedPreferences.getBoolean(key, false)
+            if (darkmode) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+        }
     }
 
 }

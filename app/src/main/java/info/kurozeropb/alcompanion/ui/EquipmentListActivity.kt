@@ -6,7 +6,9 @@ import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.GravityCompat
 import com.google.android.material.navigation.NavigationView
+import info.kurozeropb.alcompanion.App
 import info.kurozeropb.alcompanion.R
 import kotlinx.android.synthetic.main.activity_equipment_list.*
 import kotlinx.android.synthetic.main.app_bar_equipment.*
@@ -20,6 +22,8 @@ class EquipmentListActivity : AppCompatActivity(), NavigationView.OnNavigationIt
         setSupportActionBar(toolbar_equipment)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
+        sharedPreferences.registerOnSharedPreferenceChangeListener(App::onSharedPreferencesChange)
+
         window.apply {
             statusBarColor = ContextCompat.getColor(this@EquipmentListActivity, R.color.colorPrimary)
             navigationBarColor = ContextCompat.getColor(this@EquipmentListActivity, R.color.colorPrimary)
@@ -30,6 +34,14 @@ class EquipmentListActivity : AppCompatActivity(), NavigationView.OnNavigationIt
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
+    }
+
+    override fun onBackPressed() {
+        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
+            drawer_layout.closeDrawers()
+        } else {
+            drawer_layout.openDrawer(GravityCompat.START)
+        }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

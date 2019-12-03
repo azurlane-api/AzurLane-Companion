@@ -7,6 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="@color/background"
     tools:openDrawer="start">
 
     <include
@@ -22,8 +23,8 @@
         android:fitsSystemWindows="true"
         app:itemIconTint="@color/drawer_item"
         app:itemTextColor="@color/drawer_item"
-        app:itemBackground="@color/white"
-        android:background="@color/white"
+        app:itemBackground="@color/background"
+        android:background="@color/background"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/drawer" />
 

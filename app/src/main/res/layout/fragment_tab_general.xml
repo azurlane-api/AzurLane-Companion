@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/background">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,14 +29,14 @@
             android:id="@+id/tv_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
+            android:background="@color/textItemBackground"
             android:gravity="center"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:text="@string/name"
-            android:textColor="@android:color/black" />
+            android:textColor="@color/text" />
 
         <TextView
             android:id="@+id/tv_construction_time"
@@ -45,18 +46,18 @@
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
             android:text="@string/construction"
-            android:textColor="@android:color/black" />
+            android:textColor="@color/text" />
 
         <TextView
             android:id="@+id/tv_rarity"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@color/colorAccent"
+            android:background="@color/textItemBackground"
             android:gravity="center_vertical"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
             android:text="@string/rarity"
-            android:textColor="@android:color/black" />
+            android:textColor="@color/text" />
 
         <TextView
             android:id="@+id/tv_class"
@@ -66,18 +67,18 @@
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
             android:text="@string/ship_class"
-            android:textColor="@android:color/black" />
+            android:textColor="@color/text" />
 
         <TextView
             android:id="@+id/tv_nationality"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@color/colorAccent"
+            android:background="@color/textItemBackground"
             android:gravity="center_vertical"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
             android:text="@string/nationality"
-            android:textColor="@android:color/black" />
+            android:textColor="@color/text" />
 
         <TextView
             android:id="@+id/tv_classification"
@@ -87,7 +88,7 @@
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
             android:text="@string/classification"
-            android:textColor="@android:color/black" />
+            android:textColor="@color/text" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_row"
@@ -101,12 +102,12 @@
             android:id="@+id/tv_artist"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@color/colorAccent"
+            android:background="@color/textItemBackground"
             android:gravity="center_vertical"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
             android:text="@string/artist"
-            android:textColor="@android:color/black"
+            android:textColor="@color/text"
             android:textColorLink="@color/colorPrimaryDark" />
 
         <TextView
@@ -117,19 +118,19 @@
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
             android:text="@string/web"
-            android:textColor="@android:color/black"
+            android:textColor="@color/text"
             android:textColorLink="@color/colorPrimaryDark" />
 
         <TextView
             android:id="@+id/tv_pixiv"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@color/colorAccent"
+            android:background="@color/textItemBackground"
             android:gravity="center_vertical"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
             android:text="@string/pixiv"
-            android:textColor="@android:color/black"
+            android:textColor="@color/text"
             android:textColorLink="@color/colorPrimaryDark" />
 
         <TextView
@@ -140,19 +141,19 @@
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
             android:text="@string/twitter"
-            android:textColor="@android:color/black"
+            android:textColor="@color/text"
             android:textColorLink="@color/colorPrimaryDark" />
 
         <TextView
             android:id="@+id/tv_voice_actress"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@color/colorAccent"
+            android:background="@color/textItemBackground"
             android:gravity="center_vertical"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
             android:text="@string/voice_actress"
-            android:textColor="@android:color/black"
+            android:textColor="@color/text"
             android:textColorLink="@color/colorPrimaryDark" />
 
     </LinearLayout>

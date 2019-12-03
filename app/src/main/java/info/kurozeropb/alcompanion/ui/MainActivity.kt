@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val stringShips = intent.getStringExtra("ships")
         if (!stringShips.isNullOrBlank()) {
             ships = Gson().fromJson<Ships>(stringShips, object : TypeToken<Ships?>() {}.type)
-            ships = ships.distinctBy { it.name }
+            ships = ships.distinctBy { it.name } // TODO : Should be done by the api
         }
 
         val maxShips = ships.size

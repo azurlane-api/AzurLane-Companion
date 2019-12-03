@@ -34,8 +34,9 @@ lateinit var ships: Ships
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    var oldPageSize = 0
-    var pageSize = 20
+    var oldPage = 0
+    var newPage = 20
+    val pageSize = 20
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,24 +65,25 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
 
         val maxShips = ships.size
+        val showShips = ships.toMutableList().subList(oldPage, newPage)
 
-        val showShips = ships.toMutableList().subList(oldPageSize, pageSize)
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         rv_ships.layoutManager = layoutManager
+
         val rvAdapter = ShipRecyclerAdapter()
         rvAdapter.setImages(showShips, contentMain)
         rv_ships.adapter = rvAdapter
 
         val scrollListener = object : EndlessRecyclerViewScrollListener(layoutManager) {
             override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView) {
-                oldPageSize = pageSize
-                pageSize += 20
-                if (pageSize > maxShips) {
-                    pageSize = maxShips
+                oldPage = newPage
+                newPage += pageSize
+                if (newPage > maxShips) {
+                    newPage = maxShips
                 }
 
                 val curSize = rvAdapter.itemCount
-                val moreShips = ships.subList(oldPageSize, pageSize)
+                val moreShips = ships.subList(oldPage, newPage)
                 showShips.addAll(moreShips)
                 view.post { rvAdapter.notifyItemRangeInserted(curSize, showShips.size - 1) }
             }

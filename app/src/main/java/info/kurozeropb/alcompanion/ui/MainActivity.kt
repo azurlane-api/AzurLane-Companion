@@ -3,7 +3,6 @@ package info.kurozeropb.alcompanion.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.EditorInfo
@@ -31,12 +30,12 @@ import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.sdk27.coroutines.onEditorAction
 
 lateinit var ships: Ships
+const val pageSize = 20
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     var oldPage = 0
-    var newPage = 20
-    val pageSize = 20
+    var newPage = pageSize
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

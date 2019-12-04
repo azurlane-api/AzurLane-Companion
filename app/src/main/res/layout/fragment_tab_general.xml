@@ -38,57 +38,86 @@
             android:text="@string/name"
             android:textColor="@color/text" />
 
-        <TextView
-            android:id="@+id/tv_construction_time"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="center_vertical"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:text="@string/construction"
-            android:textColor="@color/text" />
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/cardBackground"
+            app:cardUseCompatPadding="true"
+            app:cardElevation="5dp"
+            app:cardCornerRadius="5dp">
 
-        <TextView
-            android:id="@+id/tv_rarity"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/textItemBackground"
-            android:gravity="center_vertical"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:text="@string/rarity"
-            android:textColor="@color/text" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="2">
 
-        <TextView
-            android:id="@+id/tv_class"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="center_vertical"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:text="@string/ship_class"
-            android:textColor="@color/text" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/tv_construction_time"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:text="@string/construction"
+                        android:textColor="@color/text" />
 
-        <TextView
-            android:id="@+id/tv_nationality"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/textItemBackground"
-            android:gravity="center_vertical"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:text="@string/nationality"
-            android:textColor="@color/text" />
+                    <TextView
+                        android:id="@+id/tv_rarity"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:background="@color/textItemBackground"
+                        android:gravity="center"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:text="@string/rarity"
+                        android:textColor="@color/text" />
+                </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_classification"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="center_vertical"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:text="@string/classification"
-            android:textColor="@color/text" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/tv_class"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:background="@color/textItemBackground"
+                        android:gravity="center"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:text="@string/ship_class"
+                        android:textColor="@color/text" />
+
+                    <TextView
+                        android:id="@+id/tv_nationality"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:text="@string/nationality"
+                        android:textColor="@color/text" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_classification"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="@string/classification"
+                    android:textColor="@color/text" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_row"
@@ -98,63 +127,93 @@
             android:orientation="horizontal"
             tools:listitem="@layout/card_skin" />
 
-        <TextView
-            android:id="@+id/tv_artist"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/textItemBackground"
-            android:gravity="center_vertical"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:text="@string/artist"
-            android:textColor="@color/text"
-            android:textColorLink="@color/colorPrimaryDark" />
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/cardBackground"
+            app:cardUseCompatPadding="true"
+            app:cardElevation="5dp"
+            app:cardCornerRadius="5dp">
 
-        <TextView
-            android:id="@+id/tv_web"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="center_vertical"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:text="@string/web"
-            android:textColor="@color/text"
-            android:textColorLink="@color/colorPrimaryDark" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="2">
 
-        <TextView
-            android:id="@+id/tv_pixiv"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/textItemBackground"
-            android:gravity="center_vertical"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:text="@string/pixiv"
-            android:textColor="@color/text"
-            android:textColorLink="@color/colorPrimaryDark" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/tv_artist"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:background="@color/textItemBackground"
+                        android:gravity="center"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:text="@string/artist"
+                        android:textColor="@color/text"
+                        android:textColorLink="@color/colorPrimaryDark" />
 
-        <TextView
-            android:id="@+id/tv_twitter"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="center_vertical"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:text="@string/twitter"
-            android:textColor="@color/text"
-            android:textColorLink="@color/colorPrimaryDark" />
+                    <TextView
+                        android:id="@+id/tv_web"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:text="@string/web"
+                        android:textColor="@color/text"
+                        android:textColorLink="@color/colorPrimaryDark" />
+                </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_voice_actress"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/textItemBackground"
-            android:gravity="center_vertical"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:text="@string/voice_actress"
-            android:textColor="@color/text"
-            android:textColorLink="@color/colorPrimaryDark" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/tv_pixiv"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:text="@string/pixiv"
+                        android:textColor="@color/text"
+                        android:textColorLink="@color/colorPrimaryDark" />
+
+                    <TextView
+                        android:id="@+id/tv_twitter"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:background="@color/textItemBackground"
+                        android:gravity="center"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:text="@string/twitter"
+                        android:textColor="@color/text"
+                        android:textColorLink="@color/colorPrimaryDark" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_voice_actress"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/textItemBackground"
+                    android:gravity="center"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="@string/voice_actress"
+                    android:textColor="@color/text"
+                    android:textColorLink="@color/colorPrimaryDark" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
 
     </LinearLayout>
 </ScrollView>

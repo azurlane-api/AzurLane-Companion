@@ -90,7 +90,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Adds the scroll listener to RecyclerView
         rv_ships.addOnScrollListener(scrollListener)
 
-        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, ships.map { it.name })
+        val adapter = ArrayAdapter<String>(this, R.layout.list_item, ships.map { it.name })
         et_search_bar.setAdapter(adapter)
 
         et_search_bar.onEditorAction { _, actionId, _ ->

@@ -40,12 +40,8 @@ class ShipActivity : AppCompatActivity() {
 
         val adapter = ViewPagerAdapter(supportFragmentManager)
         adapter.apply {
-            addFragment(
-                GeneralInfo(
-                    name,
-                    ship
-                ), "General")
-            addFragment(StatsInfo(), "Stats")
+            addFragment(GeneralInfo(name, ship), "General")
+            addFragment(StatsInfo(ship), "Stats")
         }
         viewpager.adapter = adapter
         tl_info.setupWithViewPager(viewpager)

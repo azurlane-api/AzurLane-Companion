@@ -30,4 +30,18 @@
     <string name="toolbar_title_equipment">Equipment</string>
     <string name="toolbar_title_ships">Ships</string>
     <string name="dark_mode_setting">Dark mode</string>
+    <string name="stat_health">Health: %1$s</string>
+    <string name="stat_armor">Armor: %1$s</string>
+    <string name="stat_reload">Reload: %1$s</string>
+    <string name="stat_luck">Luck: %1$s</string>
+    <string name="stat_firepower">Firepower: %1$s</string>
+    <string name="stat_torpedo">Torpedo: %1$s</string>
+    <string name="stat_evasion">Evasion: %1$s</string>
+    <string name="stat_speed">Speed: %1$s</string>
+    <string name="stat_anti_air">Anti-air: %1$s</string>
+    <string name="stat_aviation">Aviation: %1$s</string>
+    <string name="stat_oil">Oil consumption: %1$s</string>
+    <string name="stat_accuracy">Accuracy (Hit): %1$s</string>
+    <string name="stat_anti_sub_warfare">Anti-submarine warfare: %1$s</string>
+    <string name="example">example</string>
 </resources>

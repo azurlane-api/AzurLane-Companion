@@ -9,6 +9,7 @@
     <color name="editTextBackground">#333842</color>
     <color name="cardBackground">#333842</color>
     <color name="textItemBackground">#21252B</color>
+    <color name="listBackground">#21252B</color>
 
     <color name="white">#FFFFFF</color>
     <color name="alice_blue">#E7F1F9</color>

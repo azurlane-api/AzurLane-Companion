@@ -7,7 +7,7 @@ buildscript {
         maven(url = "http://dl.bintray.com/kotlin/kotlin-eap")
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:4.0.0-alpha04")
+        classpath("com.android.tools.build:gradle:4.0.0-alpha05")
         classpath(kotlin("gradle-plugin", version = "1.3.60-eap-25"))
 
         // NOTE: Do not place your application dependencies here; they belong

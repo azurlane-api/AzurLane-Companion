@@ -64,19 +64,20 @@
                         android:paddingStart="10dp"
                         android:paddingEnd="10dp"
                         android:text="@string/construction"
-                        android:textColor="@color/text" />
+                        android:textColor="@color/text"
+                        android:background="@drawable/border_bottom_end"/>
 
                     <TextView
                         android:id="@+id/tv_rarity"
                         android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_weight="1"
-                        android:background="@color/textItemBackground"
                         android:gravity="center"
                         android:paddingStart="10dp"
                         android:paddingEnd="10dp"
                         android:text="@string/rarity"
-                        android:textColor="@color/text" />
+                        android:textColor="@color/text"
+                        android:background="@drawable/border_bottom_start"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -87,12 +88,12 @@
                         android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_weight="1"
-                        android:background="@color/textItemBackground"
                         android:gravity="center"
                         android:paddingStart="10dp"
                         android:paddingEnd="10dp"
                         android:text="@string/ship_class"
-                        android:textColor="@color/text" />
+                        android:textColor="@color/text"
+                        android:background="@drawable/border_top_end"/>
 
                     <TextView
                         android:id="@+id/tv_nationality"
@@ -103,7 +104,8 @@
                         android:paddingStart="10dp"
                         android:paddingEnd="10dp"
                         android:text="@string/nationality"
-                        android:textColor="@color/text" />
+                        android:textColor="@color/text"
+                        android:background="@drawable/border_top_start"/>
                 </LinearLayout>
 
                 <TextView
@@ -114,7 +116,8 @@
                     android:paddingStart="10dp"
                     android:paddingEnd="10dp"
                     android:text="@string/classification"
-                    android:textColor="@color/text" />
+                    android:textColor="@color/text"
+                    android:background="@drawable/border_top"/>
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -149,13 +152,13 @@
                         android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_weight="1"
-                        android:background="@color/textItemBackground"
                         android:gravity="center"
                         android:paddingStart="10dp"
                         android:paddingEnd="10dp"
                         android:text="@string/artist"
                         android:textColor="@color/text"
-                        android:textColorLink="@color/colorPrimaryDark" />
+                        android:textColorLink="@color/colorPrimaryDark"
+                        android:background="@drawable/border_bottom_end"/>
 
                     <TextView
                         android:id="@+id/tv_web"
@@ -167,7 +170,8 @@
                         android:paddingEnd="10dp"
                         android:text="@string/web"
                         android:textColor="@color/text"
-                        android:textColorLink="@color/colorPrimaryDark" />
+                        android:textColorLink="@color/colorPrimaryDark"
+                        android:background="@drawable/border_bottom_start"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -183,33 +187,34 @@
                         android:paddingEnd="10dp"
                         android:text="@string/pixiv"
                         android:textColor="@color/text"
-                        android:textColorLink="@color/colorPrimaryDark" />
+                        android:textColorLink="@color/colorPrimaryDark"
+                        android:background="@drawable/border_top_end"/>
 
                     <TextView
                         android:id="@+id/tv_twitter"
                         android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_weight="1"
-                        android:background="@color/textItemBackground"
                         android:gravity="center"
                         android:paddingStart="10dp"
                         android:paddingEnd="10dp"
                         android:text="@string/twitter"
                         android:textColor="@color/text"
-                        android:textColorLink="@color/colorPrimaryDark" />
+                        android:textColorLink="@color/colorPrimaryDark"
+                        android:background="@drawable/border_top_start"/>
                 </LinearLayout>
 
                 <TextView
                     android:id="@+id/tv_voice_actress"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:background="@color/textItemBackground"
                     android:gravity="center"
                     android:paddingStart="10dp"
                     android:paddingEnd="10dp"
                     android:text="@string/voice_actress"
                     android:textColor="@color/text"
-                    android:textColorLink="@color/colorPrimaryDark" />
+                    android:textColorLink="@color/colorPrimaryDark"
+                    android:background="@drawable/border_top"/>
 
             </LinearLayout>
 

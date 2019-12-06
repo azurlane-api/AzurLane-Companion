@@ -16,7 +16,6 @@ import info.kurozeropb.alcompanion.R
 import info.kurozeropb.alcompanion.helpers.GlideApp
 import info.kurozeropb.alcompanion.responses.AllShip
 import kotlinx.android.synthetic.main.card_ship.view.*
-import kotlinx.android.synthetic.main.fragment_tab_general.view.*
 import org.jetbrains.anko.backgroundColor
 import org.jetbrains.anko.backgroundDrawable
 import org.jetbrains.anko.sdk27.coroutines.onClick
@@ -54,7 +53,7 @@ class ShipViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         if (ship.rarity != null) {
             when (val rarity = ship.rarity.toLowerCase(Locale.getDefault())) {
                 "decisive", "ultra rare" -> itemView.iv_ship_avatar.backgroundDrawable = rainbow
-                else -> itemView.iv_ship_avatar.backgroundColor = rarities[rarity] ?: R.color.background
+                else -> itemView.iv_ship_avatar.backgroundColor = rarities[rarity] ?: ContextCompat.getColor(itemView.context, R.color.background)
             }
         }
 

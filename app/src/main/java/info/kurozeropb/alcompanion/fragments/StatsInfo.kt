@@ -1,8 +1,5 @@
 package info.kurozeropb.alcompanion.fragments
 
-import android.graphics.PorterDuff
-import android.graphics.drawable.Drawable
-import android.os.Build
 import android.os.Bundle
 import android.text.Html
 import android.view.LayoutInflater
@@ -19,7 +16,6 @@ import info.kurozeropb.alcompanion.responses.Stat
 import kotlinx.android.synthetic.main.fragment_tab_stats.*
 import kotlinx.android.synthetic.main.fragment_tab_stats.view.*
 import kotlin.math.roundToInt
-
 
 class StatsInfo(val ship: Ship) : Fragment() {
 

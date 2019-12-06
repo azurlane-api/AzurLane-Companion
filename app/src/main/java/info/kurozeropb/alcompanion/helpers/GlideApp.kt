@@ -8,7 +8,6 @@ import com.bumptech.glide.module.AppGlideModule
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.signature.ObjectKey
 
-
 @GlideModule
 class ALGlide : AppGlideModule() {
 

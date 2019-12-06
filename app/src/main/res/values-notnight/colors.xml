@@ -9,7 +9,7 @@
     <color name="editTextBackground">#FAFAFA</color>
     <color name="cardBackground">#FFFFFF</color>
     <color name="textItemBackground">#DCEAEA</color>
-    <color name="listBackground">#FFFFFF</color>
+    <color name="listBackground">#FAFAFA</color>
     <color name="colorBorder">#000</color>
 
     <color name="white">#FFFFFF</color>

@@ -10,6 +10,7 @@
     <color name="cardBackground">#FFFFFF</color>
     <color name="textItemBackground">#DCEAEA</color>
     <color name="listBackground">#FFFFFF</color>
+    <color name="colorBorder">#000</color>
 
     <color name="white">#FFFFFF</color>
     <color name="alice_blue">#E7F1F9</color>

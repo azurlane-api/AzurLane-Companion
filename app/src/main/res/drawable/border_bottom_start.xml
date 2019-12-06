@@ -9,8 +9,8 @@
         <shape android:shape="rectangle">
             <solid android:color="@android:color/transparent"/>
             <stroke
-                android:width="1dp"
-                android:color="@color/colorPrimaryDarker"/>
+                android:width="0.5dp"
+                android:color="@color/colorBorder"/>
         </shape>
     </item>
 </layer-list>

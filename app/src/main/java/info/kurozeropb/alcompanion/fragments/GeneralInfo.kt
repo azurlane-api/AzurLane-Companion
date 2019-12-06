@@ -73,15 +73,9 @@ class GeneralInfo(val name: String, val ship: Ship) : Fragment() {
         )
 
         if (ship.rarity != null) {
-            val rarity = ship.rarity.toLowerCase(Locale.getDefault())
-            val color = rarities[rarity]
-            if (color != null) {
-                view.main_image.backgroundColor = color
-            } else {
-                when (rarity) {
-                    "decisive" -> view.main_image.backgroundDrawable = rainbow
-                    "ultra rare" -> view.main_image.backgroundDrawable = rainbow
-                }
+            when (val rarity = ship.rarity.toLowerCase(Locale.getDefault())) {
+                "decisive", "ultra rare" -> view.main_image.backgroundDrawable = rainbow
+                else -> view.main_image.backgroundColor = rarities[rarity] ?: R.color.background
             }
         }
 

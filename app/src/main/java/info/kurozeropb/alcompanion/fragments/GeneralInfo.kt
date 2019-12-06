@@ -5,6 +5,7 @@ package info.kurozeropb.alcompanion.fragments
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.GradientDrawable
+import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.text.Html
@@ -12,6 +13,7 @@ import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
@@ -28,6 +30,7 @@ import info.kurozeropb.alcompanion.adapters.file
 import info.kurozeropb.alcompanion.helpers.GlideApp
 import info.kurozeropb.alcompanion.helpers.ItemDecoration
 import info.kurozeropb.alcompanion.responses.Ship
+import info.kurozeropb.alcompanion.ui.WebActivity
 import kotlinx.android.synthetic.main.overlay.view.*
 import kotlinx.android.synthetic.main.fragment_tab_general.view.*
 import org.jetbrains.anko.backgroundColor
@@ -47,6 +50,12 @@ class GeneralInfo(val name: String, val ship: Ship) : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val customTabs = CustomTabsIntent.Builder()
+                .addDefaultShareMenuItem()
+                .setToolbarColor(ContextCompat.getColor(view.context, R.color.colorPrimary))
+                .setShowTitle(true)
+                .build()
+
         val rainbow = GradientDrawable(
             GradientDrawable.Orientation.TL_BR, intArrayOf(
                 ContextCompat.getColor(view.context, R.color.rainbow_yellow),
@@ -144,16 +153,40 @@ class GeneralInfo(val name: String, val ship: Ship) : Fragment() {
         view.tv_nationality.text = Html.fromHtml(getString(R.string.nationality, "<b>${ship.nationality ?: ""}</b>"), Html.FROM_HTML_MODE_LEGACY)
         view.tv_classification.text = Html.fromHtml(getString(R.string.classification, "<b>${ship.hullType ?: ""}</b>"), Html.FROM_HTML_MODE_LEGACY)
 
-        view.tv_artist.text = Html.fromHtml(getString(R.string.artist, "<a href=\"${ship.miscellaneous.artist?.link ?: ""}\"><b>${ship.miscellaneous.artist?.name ?: ""}</b></a>"), Html.FROM_HTML_MODE_LEGACY)
-        view.tv_artist.movementMethod = LinkMovementMethod.getInstance()
-        view.tv_web.text = Html.fromHtml(getString(R.string.web, "<a href=\"${ship.miscellaneous.web?.link ?: ""}\"><b>${ship.miscellaneous.web?.name ?: ""}</b></a>"), Html.FROM_HTML_MODE_LEGACY)
-        view.tv_web.movementMethod = LinkMovementMethod.getInstance()
-        view.tv_pixiv.text = Html.fromHtml(getString(R.string.pixiv, "<a href=\"${ship.miscellaneous.pixiv?.link ?: ""}\"><b>${ship.miscellaneous.pixiv?.name ?: ""}</b></a>"), Html.FROM_HTML_MODE_LEGACY)
-        view.tv_pixiv.movementMethod = LinkMovementMethod.getInstance()
-        view.tv_twitter.text = Html.fromHtml(getString(R.string.twitter, "<a href=\"${ship.miscellaneous.twitter?.link ?: ""}\"><b>${ship.miscellaneous.twitter?.name ?: ""}</b></a>"), Html.FROM_HTML_MODE_LEGACY)
-        view.tv_twitter.movementMethod = LinkMovementMethod.getInstance()
-        view.tv_voice_actress.text = Html.fromHtml(getString(R.string.voice_actress, "<a href=\"${ship.miscellaneous.voiceActress?.link ?: ""}\"><b>${ship.miscellaneous.voiceActress?.name ?: ""}</b></a>"), Html.FROM_HTML_MODE_LEGACY)
-        view.tv_voice_actress.movementMethod = LinkMovementMethod.getInstance()
+        view.tv_artist.text = Html.fromHtml(getString(R.string.artist, "<font color=\"#B4D5E8\"><b>${ship.miscellaneous.artist?.name ?: ""}</b></font>"), Html.FROM_HTML_MODE_LEGACY)
+        view.tv_artist.onClick {
+            if (ship.miscellaneous.artist?.link != null) {
+                customTabs.launchUrl(view.context, Uri.parse(ship.miscellaneous.artist?.link))
+            }
+        }
+
+        view.tv_web.text = Html.fromHtml(getString(R.string.web, "<font color=\"#B4D5E8\"><b>${ship.miscellaneous.web?.name ?: ""}</b></font>"), Html.FROM_HTML_MODE_LEGACY)
+        view.tv_web.onClick {
+            if (ship.miscellaneous.web?.link != null) {
+                customTabs.launchUrl(view.context, Uri.parse(ship.miscellaneous.web?.link))
+            }
+        }
+
+        view.tv_pixiv.text = Html.fromHtml(getString(R.string.pixiv, "<font color=\"#B4D5E8\"><b>${ship.miscellaneous.pixiv?.name ?: ""}</b></font>"), Html.FROM_HTML_MODE_LEGACY)
+        view.tv_pixiv.onClick {
+            if (ship.miscellaneous.pixiv?.link != null) {
+                customTabs.launchUrl(view.context, Uri.parse(ship.miscellaneous.pixiv?.link))
+            }
+        }
+
+        view.tv_twitter.text = Html.fromHtml(getString(R.string.twitter, "<font color=\"#B4D5E8\"><b>${ship.miscellaneous.twitter?.name ?: ""}</b></font>"), Html.FROM_HTML_MODE_LEGACY)
+        view.tv_twitter.onClick {
+            if (ship.miscellaneous.twitter?.link != null) {
+                customTabs.launchUrl(view.context, Uri.parse(ship.miscellaneous.twitter?.link))
+            }
+        }
+
+        view.tv_voice_actress.text = Html.fromHtml(getString(R.string.voice_actress, "<font color=\"#B4D5E8\"><b>${ship.miscellaneous.voiceActress?.name ?: ""}</b></font>"), Html.FROM_HTML_MODE_LEGACY)
+        view.tv_voice_actress.onClick {
+            if (ship.miscellaneous.voiceActress?.link != null) {
+                customTabs.launchUrl(view.context, Uri.parse(ship.miscellaneous.voiceActress?.link))
+            }
+        }
 
         view.rv_row.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         view.rv_row.addItemDecoration(ItemDecoration(80, ship.skins.size))

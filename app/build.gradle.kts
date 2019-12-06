@@ -69,6 +69,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-extensions:2.1.0")
     implementation("androidx.navigation:navigation-fragment-ktx:2.1.0")
     implementation("androidx.navigation:navigation-ui-ktx:2.1.0")
+    implementation("com.android.support:customtabs:28.0.0")
 
     implementation("org.jetbrains.anko:anko:0.10.8")
     implementation("org.jetbrains.anko:anko-design:0.10.8")

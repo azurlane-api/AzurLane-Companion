@@ -18,10 +18,7 @@ class ShipActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        overridePendingTransition(
-            R.anim.fadein,
-            R.anim.fadeout
-        )
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout)
         setContentView(R.layout.activity_ship)
 
         val name = intent.getStringExtra("name")

@@ -9,7 +9,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.text.Html
-import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,7 +29,6 @@ import info.kurozeropb.alcompanion.adapters.file
 import info.kurozeropb.alcompanion.helpers.GlideApp
 import info.kurozeropb.alcompanion.helpers.ItemDecoration
 import info.kurozeropb.alcompanion.responses.Ship
-import info.kurozeropb.alcompanion.ui.WebActivity
 import kotlinx.android.synthetic.main.overlay.view.*
 import kotlinx.android.synthetic.main.fragment_tab_general.view.*
 import org.jetbrains.anko.backgroundColor

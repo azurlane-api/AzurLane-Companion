@@ -63,11 +63,12 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="50dp">
+
                     <TextView
                         android:id="@+id/tv_health"
                         android:layout_width="0dp"
-                        android:layout_height="50dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/border_bottom_end"
                         android:gravity="center"
@@ -79,7 +80,7 @@
                     <TextView
                         android:id="@+id/tv_armor"
                         android:layout_width="0dp"
-                        android:layout_height="50dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/border_bottom_start"
                         android:gravity="center"
@@ -87,15 +88,17 @@
                         android:paddingEnd="10dp"
                         android:text="@string/example"
                         android:textColor="@color/text"/>
+
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="50dp">
+
                     <TextView
                         android:id="@+id/tv_reload"
                         android:layout_width="0dp"
-                        android:layout_height="50dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/border_top_end"
                         android:gravity="center"
@@ -107,7 +110,7 @@
                     <TextView
                         android:id="@+id/tv_luck"
                         android:layout_width="0dp"
-                        android:layout_height="50dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/border_top_start"
                         android:gravity="center"
@@ -115,15 +118,17 @@
                         android:paddingEnd="10dp"
                         android:text="@string/example"
                         android:textColor="@color/text"/>
+
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="50dp">
+
                     <TextView
                         android:id="@+id/tv_firepower"
                         android:layout_width="0dp"
-                        android:layout_height="50dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/border_top_bottom_end"
                         android:gravity="center"
@@ -135,7 +140,7 @@
                     <TextView
                         android:id="@+id/tv_torpedo"
                         android:layout_width="0dp"
-                        android:layout_height="50dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/border_top_bottom_start"
                         android:gravity="center"
@@ -143,15 +148,17 @@
                         android:paddingEnd="10dp"
                         android:text="@string/example"
                         android:textColor="@color/text"/>
+
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="50dp">
+
                     <TextView
                         android:id="@+id/tv_evasion"
                         android:layout_width="0dp"
-                        android:layout_height="50dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/border_bottom_end"
                         android:gravity="center"
@@ -163,7 +170,7 @@
                     <TextView
                         android:id="@+id/tv_speed"
                         android:layout_width="0dp"
-                        android:layout_height="50dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/border_bottom_start"
                         android:gravity="center"
@@ -171,15 +178,17 @@
                         android:paddingEnd="10dp"
                         android:text="@string/example"
                         android:textColor="@color/text"/>
+
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="50dp">
+
                     <TextView
                         android:id="@+id/tv_anti_air"
                         android:layout_width="0dp"
-                        android:layout_height="50dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/border_top_end"
                         android:gravity="center"
@@ -191,7 +200,7 @@
                     <TextView
                         android:id="@+id/tv_aviation"
                         android:layout_width="0dp"
-                        android:layout_height="50dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/border_top_start"
                         android:gravity="center"
@@ -199,15 +208,17 @@
                         android:paddingEnd="10dp"
                         android:text="@string/example"
                         android:textColor="@color/text"/>
+
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="50dp">
+
                     <TextView
                         android:id="@+id/tv_oil"
                         android:layout_width="0dp"
-                        android:layout_height="50dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/border_top_end_thick"
                         android:gravity="center"
@@ -219,7 +230,7 @@
                     <TextView
                         android:id="@+id/tv_accuracy"
                         android:layout_width="0dp"
-                        android:layout_height="50dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/border_top_start_thick"
                         android:gravity="center"
@@ -227,6 +238,7 @@
                         android:paddingEnd="10dp"
                         android:text="@string/example"
                         android:textColor="@color/text"/>
+
                 </LinearLayout>
 
                 <TextView

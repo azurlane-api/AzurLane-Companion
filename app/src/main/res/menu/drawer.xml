@@ -7,6 +7,10 @@
             android:icon="@drawable/anchor"
             android:title="Ships" />
         <item
+            android:id="@+id/nav_nations"
+            android:icon="@drawable/globe"
+            android:title="Nations" />
+        <item
             android:id="@+id/nav_equipment"
             android:icon="@drawable/firepower"
             android:title="Equipment" />

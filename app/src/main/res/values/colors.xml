@@ -15,6 +15,20 @@
     <color name="white">#FFFFFF</color>
     <color name="alice_blue">#E7F1F9</color>
 
+    <color name="eagle_union">#00bfff</color>
+    <color name="royal_navy">#000080</color>
+    <color name="sakura_empire">#ffc0cb</color>
+    <color name="ironblood">#ff0000</color>
+    <color name="eastern_radiance">#ed143d</color>
+    <color name="north_union">#808080</color>
+    <color name="iris_libre">#0000ff</color>
+    <color name="vichya_dominion">#ed143d</color>
+    <color name="sardegna_empire">#ffffff</color>
+    <color name="neptunia">#ba55d3</color>
+    <color name="bilibili">#00bfff</color>
+    <color name="utawarerumono">#ed143d</color>
+    <color name="kizunaai">#ffc0cb</color>
+
     <color name="normal">#dcdcdc</color>
     <color name="rare">#9fe8ff</color>
     <color name="elite">#c4adff</color>

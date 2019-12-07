@@ -36,16 +36,20 @@
             android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity" />
 
-        <activity android:name="info.kurozeropb.alcompanion.ui.SettingsActivity"
+        <activity android:name="info.kurozeropb.alcompanion.ui.NationsActivity"
             android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity" />
 
-        <activity android:name="info.kurozeropb.alcompanion.ui.EquipmentListActivity"
+        <activity android:name="info.kurozeropb.alcompanion.ui.EquipmentsActivity"
             android:theme="@style/AppTheme.DarkNavBar"
             android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity" />
 
         <activity android:name="info.kurozeropb.alcompanion.ui.EquipmentActivity"
+            android:screenOrientation="sensorPortrait"
+            tools:ignore="LockedOrientationActivity" />
+
+        <activity android:name="info.kurozeropb.alcompanion.ui.SettingsActivity"
             android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity" />
 

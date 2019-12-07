@@ -30,10 +30,10 @@ import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.sdk27.coroutines.onEditorAction
 
 lateinit var ships: Ships
-const val pageSize = 10
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
+    val pageSize = 10
     var oldPage = 0
     var newPage = pageSize
 
@@ -61,6 +61,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if (!jsonships.isNullOrBlank()) {
             ships = Gson().fromJson<Ships>(jsonships, object : TypeToken<Ships?>() {}.type)
             ships = ships.distinctBy { it.name } // TODO : Should be done by the api
+        }
+
+        val nation = intent.getStringExtra("nation")
+        if (nation != null) {
+            ships = ships.filter { it.nationality == nation }
         }
 
         val maxShips = ships.size
@@ -134,10 +139,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_ships -> {
-                drawer_layout.closeDrawers()
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+            R.id.nav_nations -> {
+                val intent = Intent(this, NationsActivity::class.java)
+                startActivity(intent)
+                finish()
             }
             R.id.nav_equipment -> {
-                val intent = Intent(this, EquipmentListActivity::class.java)
+                val intent = Intent(this, EquipmentsActivity::class.java)
                 startActivity(intent)
                 finish()
             }

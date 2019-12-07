@@ -9,8 +9,8 @@ plugins {
 
 object Versions {
     private const val versionMajor = 1
-    private  const val versionMinor = 6
-    private const val versionPatch = 1
+    private  const val versionMinor = 7
+    private const val versionPatch = 0
 
     const val minSdk = 24
     const val targetSdk = 29

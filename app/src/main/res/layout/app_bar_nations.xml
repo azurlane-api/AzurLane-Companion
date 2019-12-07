@@ -6,26 +6,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.EquipmentsActivity">
+    tools:context=".ui.NationsActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:foregroundTint="@color/alice_blue"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_equipment"
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
             <TextView
-                android:id="@+id/toolbar_title_equipment"
+                android:id="@+id/toolbar_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/toolbar_title_equipment"
+                android:text="@string/toolbar_title_nations"
                 android:textSize="30sp"
                 android:textColor="@color/alice_blue"
                 android:layout_gravity="center" />
@@ -34,6 +33,6 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_equipment_list" />
+    <include layout="@layout/content_nations" />
 
 </LinearLayout>

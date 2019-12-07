@@ -13,7 +13,7 @@ import info.kurozeropb.alcompanion.R
 import kotlinx.android.synthetic.main.activity_equipment_list.*
 import kotlinx.android.synthetic.main.app_bar_equipment.*
 
-class EquipmentListActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class EquipmentsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,8 +25,8 @@ class EquipmentListActivity : AppCompatActivity(), NavigationView.OnNavigationIt
         sharedPreferences.registerOnSharedPreferenceChangeListener(App::onSharedPreferencesChange)
 
         window.apply {
-            statusBarColor = ContextCompat.getColor(this@EquipmentListActivity, R.color.colorPrimary)
-            navigationBarColor = ContextCompat.getColor(this@EquipmentListActivity, R.color.colorPrimary)
+            statusBarColor = ContextCompat.getColor(this@EquipmentsActivity, R.color.colorPrimary)
+            navigationBarColor = ContextCompat.getColor(this@EquipmentsActivity, R.color.colorPrimary)
         }
 
         val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbar_equipment, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
@@ -51,8 +51,15 @@ class EquipmentListActivity : AppCompatActivity(), NavigationView.OnNavigationIt
                 startActivity(intent)
                 finish()
             }
+            R.id.nav_nations -> {
+                val intent = Intent(this, NationsActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
             R.id.nav_equipment -> {
-                drawer_layout.closeDrawers()
+                val intent = Intent(this, EquipmentsActivity::class.java)
+                startActivity(intent)
+                finish()
             }
             R.id.nav_settings -> {
                 val intent = Intent(this, SettingsActivity::class.java)

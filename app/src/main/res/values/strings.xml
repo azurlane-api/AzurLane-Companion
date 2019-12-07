@@ -44,4 +44,7 @@
     <string name="stat_accuracy">Accuracy (Hit): %1$s</string>
     <string name="stat_anti_sub_warfare">Anti-submarine warfare: %1$s</string>
     <string name="example">example</string>
+    <string name="toolbar_title_nations">Nations</string>
+    <string name="search_hint_nation">Nation name</string>
+    <string name="nation_icon">nation icon</string>
 </resources>

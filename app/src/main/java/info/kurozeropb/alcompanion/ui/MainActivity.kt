@@ -29,6 +29,8 @@ import kotlinx.android.synthetic.main.content_main.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.sdk27.coroutines.onEditorAction
 
+lateinit var allShips: Ships
+lateinit var filteredShips: Ships
 lateinit var ships: Ships
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -59,17 +61,20 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         val jsonships = intent.getStringExtra("ships")
         if (!jsonships.isNullOrBlank()) {
-            ships = Gson().fromJson<Ships>(jsonships, object : TypeToken<Ships?>() {}.type)
-            ships = ships.distinctBy { it.name } // TODO : Should be done by the api
+            allShips = Gson().fromJson<Ships>(jsonships, object : TypeToken<Ships?>() {}.type)
+            allShips = allShips.distinctBy { it.name } // TODO : Should be done by the api
         }
 
         val nation = intent.getStringExtra("nation")
         if (nation != null) {
-            ships = ships.filter { it.nationality == nation }
+            filteredShips = allShips.filter { it.nationality == nation }
+            ships = filteredShips
+        } else {
+            ships = allShips
         }
 
         val maxShips = ships.size
-        val showShips = ships.toMutableList().subList(oldPage, newPage)
+        val showShips = ships.toMutableList().subList(oldPage, if (newPage > ships.size) ships.size else newPage)
 
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         rv_ships.layoutManager = layoutManager
@@ -82,8 +87,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView) {
                 oldPage = newPage
                 newPage += pageSize
+//                if (newPage > maxShips) {
+//                    newPage = maxShips
+//                }
                 if (newPage > maxShips) {
-                    newPage = maxShips
+                    return
                 }
 
                 val curSize = rvAdapter.itemCount

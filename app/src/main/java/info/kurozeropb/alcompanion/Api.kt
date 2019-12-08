@@ -23,8 +23,6 @@ import com.google.android.material.snackbar.Snackbar
 import info.kurozeropb.alcompanion.responses.*
 import info.kurozeropb.alcompanion.ui.ShipActivity
 import kotlinx.android.synthetic.main.content_main.view.*
-import net.danlew.android.joda.DateUtils
-import org.joda.time.LocalDate
 import java.io.File
 import java.io.FileOutputStream
 import java.text.SimpleDateFormat

@@ -45,7 +45,7 @@
                 android:layout_height="25dp"
                 android:layout_marginEnd="24dp"
                 android:scaleType="fitXY"
-                android:tint="@color/text"
+                android:tint="@color/filter_icon"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

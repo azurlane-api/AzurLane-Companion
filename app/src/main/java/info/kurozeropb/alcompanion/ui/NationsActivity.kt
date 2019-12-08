@@ -134,7 +134,7 @@ class NationsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
                 finish()
             }
             R.id.nav_equipment -> {
-                val intent = Intent(this, EquipmentsActivity::class.java)
+                val intent = Intent(this, EquipmentTypesActivity::class.java)
                 startActivity(intent)
                 finish()
             }

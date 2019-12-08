@@ -14,6 +14,8 @@ import androidx.core.view.GravityCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.navigation.NavigationView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -22,7 +24,10 @@ import info.kurozeropb.alcompanion.App
 import info.kurozeropb.alcompanion.R
 import info.kurozeropb.alcompanion.adapters.ShipRecyclerAdapter
 import info.kurozeropb.alcompanion.helpers.EndlessRecyclerViewScrollListener
+import info.kurozeropb.alcompanion.helpers.GlideApp
 import info.kurozeropb.alcompanion.responses.Ships
+import it.sephiroth.android.library.xtooltip.ClosePolicy
+import it.sephiroth.android.library.xtooltip.Tooltip
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -34,6 +39,8 @@ lateinit var filteredShips: Ships
 lateinit var ships: Ships
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+    val requestOptions = RequestOptions().diskCacheStrategy(DiskCacheStrategy.RESOURCE)
 
     val pageSize = 10
     var oldPage = 0
@@ -59,13 +66,41 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         nav_view.setNavigationItemSelectedListener(this)
 
+        val icon = intent.getStringExtra("icon")
+        val nation = intent.getStringExtra("nation")
+        val tooltipText = if (icon != null) {
+            GlideApp.with(this)
+                    .load(icon)
+                    .apply(requestOptions)
+                    .error(R.drawable.placeholder)
+                    .into(iv_active_filter)
+
+            "Only $nation ships are shown"
+        } else {
+            iv_active_filter.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.filter_all))
+
+            "All ships are shown"
+        }
+
+        iv_active_filter.onClick {
+            Tooltip.Builder(this@MainActivity)
+                    .anchor(iv_active_filter, 0, 0, false)
+                    .text(tooltipText)
+                    .styleId(R.style.Tooltip)
+                    .arrow(true)
+                    .floatingAnimation(Tooltip.Animation.SLOW)
+                    .closePolicy(ClosePolicy.TOUCH_INSIDE_NO_CONSUME)
+                    .showDuration(5000)
+                    .create()
+                    .show(iv_active_filter, Tooltip.Gravity.BOTTOM, true)
+        }
+
         val jsonships = intent.getStringExtra("ships")
         if (!jsonships.isNullOrBlank()) {
             allShips = Gson().fromJson<Ships>(jsonships, object : TypeToken<Ships?>() {}.type)
             allShips = allShips.distinctBy { it.name } // TODO : Should be done by the api
         }
 
-        val nation = intent.getStringExtra("nation")
         if (nation != null) {
             filteredShips = allShips.filter { it.nationality == nation }
             ships = filteredShips
@@ -87,9 +122,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView) {
                 oldPage = newPage
                 newPage += pageSize
-//                if (newPage > maxShips) {
-//                    newPage = maxShips
-//                }
                 if (newPage > maxShips) {
                     return
                 }
@@ -157,7 +189,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 finish()
             }
             R.id.nav_equipment -> {
-                val intent = Intent(this, EquipmentsActivity::class.java)
+                val intent = Intent(this, EquipmentTypesActivity::class.java)
                 startActivity(intent)
                 finish()
             }

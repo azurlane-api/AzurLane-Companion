@@ -53,6 +53,7 @@ class NationsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         itemView.cv_nation.onClick {
             val intent = Intent(activity, MainActivity::class.java)
             intent.putExtra("nation", nation.name)
+            intent.putExtra("icon", nation.icon)
             activity.startActivity(intent)
             activity.finish()
         }

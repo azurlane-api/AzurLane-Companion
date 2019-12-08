@@ -11,6 +11,7 @@
     <color name="textItemBackground">#DCEAEA</color>
     <color name="listBackground">#FAFAFA</color>
     <color name="colorBorder">#000</color>
+    <color name="stroke">#FAFAFA</color>
 
     <color name="white">#FFFFFF</color>
     <color name="alice_blue">#E7F1F9</color>

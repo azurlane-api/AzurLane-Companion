@@ -14,16 +14,13 @@ import android.widget.Toast
 import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.fuel.httpGet
 import com.google.gson.Gson
-import info.kurozeropb.alcompanion.responses.Response
-import info.kurozeropb.alcompanion.responses.ShipResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.lang.Exception
 import com.github.kittinunf.result.Result
 import com.google.android.material.snackbar.Snackbar
-import info.kurozeropb.alcompanion.responses.AllShipsResponse
-import info.kurozeropb.alcompanion.responses.NationsResponse
+import info.kurozeropb.alcompanion.responses.*
 import info.kurozeropb.alcompanion.ui.ShipActivity
 import kotlinx.android.synthetic.main.content_main.view.*
 import java.io.File
@@ -122,6 +119,62 @@ object Api {
                             is Result.Success -> {
                                 if (data != null) {
                                     Response(Gson().fromJson(data, NationsResponse::class.java), null)
+                                } else {
+                                    Response(null, Exception("No data returned"))
+                                }
+                            }
+                            is Result.Failure -> {
+                                if (exception != null) {
+                                    Response(null, exception)
+                                } else {
+                                    Response(null, Exception("No data returned"))
+                                }
+                            }
+                        }
+                        complete(response)
+                    }
+        }
+    }
+
+    fun getEquipmentTypes(complete: Response<EquipmentTypesResponse?, Exception?>.() -> Unit) {
+        GlobalScope.launch(Dispatchers.IO) {
+            "/equipment/types".httpGet()
+                    .timeout(31000)
+                    .timeoutRead(60000)
+                    .responseString { result ->
+                        val (data, exception) = result
+                        val response = when (result) {
+                            is Result.Success -> {
+                                if (data != null) {
+                                    Response(Gson().fromJson(data, EquipmentTypesResponse::class.java), null)
+                                } else {
+                                    Response(null, Exception("No data returned"))
+                                }
+                            }
+                            is Result.Failure -> {
+                                if (exception != null) {
+                                    Response(null, exception)
+                                } else {
+                                    Response(null, Exception("No data returned"))
+                                }
+                            }
+                        }
+                        complete(response)
+                    }
+        }
+    }
+
+    fun getEquipments(type: String, complete: Response<EquipmentsResponse?, Exception?>.() -> Unit) {
+        GlobalScope.launch(Dispatchers.IO) {
+            "/equipment/all".httpGet(parameters = listOf("type" to type))
+                    .timeout(31000)
+                    .timeoutRead(60000)
+                    .responseString { result ->
+                        val (data, exception) = result
+                        val response = when (result) {
+                            is Result.Success -> {
+                                if (data != null) {
+                                    Response(Gson().fromJson(data, EquipmentsResponse::class.java), null)
                                 } else {
                                     Response(null, Exception("No data returned"))
                                 }

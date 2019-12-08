@@ -80,6 +80,7 @@ dependencies {
     implementation("com.github.stfalcon:frescoimageviewer:0.5.0")
     implementation("com.squareup.picasso:picasso:2.71828")
     implementation("com.hendraanggrian:pikasso:0.2")
+    implementation("com.github.sephiroth74:android-target-tooltip:2.0.4")
     implementation("com.github.bumptech.glide:glide:4.9.0") {
         exclude(group = "com.android.support")
     }

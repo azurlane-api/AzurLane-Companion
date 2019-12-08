@@ -50,7 +50,7 @@ data class Equippable(
     var link: String
 )
 
-data class Equipment(
+data class ShipEquipment(
     var efficiency: String? = null,
     var equippable: Equippable? = null
 )
@@ -70,7 +70,7 @@ data class Ship(
     val hullType: String? = null,
     val stats: Stats,
     val miscellaneous: Miscellaneous,
-    val equipments: List<Equipment>
+    val equipments: List<ShipEquipment>
 )
 
 data class ShipResponse(

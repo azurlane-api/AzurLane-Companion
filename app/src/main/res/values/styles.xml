@@ -29,4 +29,14 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Tooltip.Text">
+        <item name="android:textColor">@color/text</item>
+    </style>
+
+    <style name="Tooltip" parent="ToolTipLayoutDefaultStyle">
+        <item name="ttlm_backgroundColor">@color/background</item>
+        <item name="ttlm_strokeColor">@color/stroke</item>
+        <item name="ttlm_textStyle">@style/Tooltip.Text</item>
+    </style>
 </resources>

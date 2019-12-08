@@ -40,6 +40,11 @@
             android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity" />
 
+        <activity android:name="info.kurozeropb.alcompanion.ui.EquipmentTypesActivity"
+            android:theme="@style/AppTheme.DarkNavBar"
+            android:screenOrientation="sensorPortrait"
+            tools:ignore="LockedOrientationActivity" />
+
         <activity android:name="info.kurozeropb.alcompanion.ui.EquipmentsActivity"
             android:theme="@style/AppTheme.DarkNavBar"
             android:screenOrientation="sensorPortrait"

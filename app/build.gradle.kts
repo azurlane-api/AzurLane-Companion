@@ -81,6 +81,7 @@ dependencies {
     implementation("com.squareup.picasso:picasso:2.71828")
     implementation("com.hendraanggrian:pikasso:0.2")
     implementation("com.github.sephiroth74:android-target-tooltip:2.0.4")
+    implementation("net.danlew:android.joda:2.10.3")
     implementation("com.github.bumptech.glide:glide:4.9.0") {
         exclude(group = "com.android.support")
     }

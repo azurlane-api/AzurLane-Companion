@@ -23,8 +23,11 @@ import com.google.android.material.snackbar.Snackbar
 import info.kurozeropb.alcompanion.responses.*
 import info.kurozeropb.alcompanion.ui.ShipActivity
 import kotlinx.android.synthetic.main.content_main.view.*
+import net.danlew.android.joda.DateUtils
+import org.joda.time.LocalDate
 import java.io.File
 import java.io.FileOutputStream
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.concurrent.schedule
 
@@ -195,7 +198,10 @@ object Api {
     fun downloadAndSave(name: String, url: String, view: View) {
         val mediaStorageDir = File(Environment.getExternalStorageDirectory().toString() + "/AzurLane/")
         if (!mediaStorageDir.exists()) mediaStorageDir.mkdirs()
-        val file = File(mediaStorageDir, "${name}.png")
+        val sdf = SimpleDateFormat("yyyyMdd-hhmmss", Locale.getDefault())
+        val currentDate = sdf.format(Date())
+        val filename = "${name}_${currentDate}.png"
+        val file = File(mediaStorageDir, filename)
 
         Fuel.download(url).fileDestination { response, _ ->
             response.toString()
@@ -209,7 +215,7 @@ object Api {
 
                     view.context.sendBroadcast(Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(file)))
                     GlobalScope.launch(Dispatchers.Main) {
-                        Toast.makeText(view.context, "Saved as ${name}.png", Toast.LENGTH_LONG).show()
+                        Toast.makeText(view.context, "Saved as $filename", Toast.LENGTH_LONG).show()
                     }
                     fileOutput.close()
                 }

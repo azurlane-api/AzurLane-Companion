@@ -30,7 +30,7 @@ import java.util.*
 import kotlin.concurrent.schedule
 
 object Api {
-    const val baseUrl = "https://azurlane-api.herokuapp.com/v2"
+    const val baseUrl = "https://kurozeropb.info/azurlane/v2"
 
     init {
         System.loadLibrary("api")

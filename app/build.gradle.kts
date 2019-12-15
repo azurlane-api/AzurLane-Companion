@@ -10,7 +10,7 @@ plugins {
 object Versions {
     private const val versionMajor = 1
     private  const val versionMinor = 7
-    private const val versionPatch = 0
+    private const val versionPatch = 1
 
     const val minSdk = 24
     const val targetSdk = 29
@@ -69,7 +69,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-extensions:2.1.0")
     implementation("androidx.navigation:navigation-fragment-ktx:2.1.0")
     implementation("androidx.navigation:navigation-ui-ktx:2.1.0")
-    implementation("com.android.support:customtabs:28.0.0")
+    implementation("androidx.browser:browser:1.0.0")
 
     implementation("org.jetbrains.anko:anko:0.10.8")
     implementation("org.jetbrains.anko:anko-design:0.10.8")
